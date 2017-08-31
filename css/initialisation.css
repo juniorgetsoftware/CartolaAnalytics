@@ -1,0 +1,150 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 22, 2017, 10:25:31 AM
+    Author     : Ricardo
+*/
+
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      /*background-color: black;*/
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      /*width: 100%;  Set width to 100%*/ 
+      margin: auto;
+      /*min-height:200px;*/
+      max-height: 300px !important;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  
+  /*Style configuration for checkboxes*/
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  /*Style configuration for teams checkboxes*/
+  label.lblTimes {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  label.lblTimes:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+
+  label.lblTimes img {
+    height: 30px;
+    width: 30px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+
+  :checked + label.lblTimes:before {
+    content: "✓";
+    background-color: #5fba7d;
+    transform: scale(1);
+  }
+
+  /*Style configuration for positions checkboxes*/
+  label.lblPosicoes {
+    /*border: 1px solid #eee;*/
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 160%;
+    width: 100px;
+    color: black;
+  }
+
+  label.lblPosicoes:before {
+    
+    font-family: FontAwesome;
+    letter-spacing: 10px;
+    color: lightgrey;
+    content: "\f10c";
+  }
+
+  :checked + label.lblPosicoes:before {
+    content: "\f05d";
+    color: #5fba7d;
+  }
+  
+  a.linkPanel {
+      display: block;
+      text-decoration: none;
+      font-size: 150%;
+      color: black;
+  }
+  
+  .h3Mercado {
+      display: inline;
+  }
+
+  .separa {
+      clear: both;
+  }
+  
+  .logo {
+      display: inline-block;
+      margin: 0px;
+      padding: 5px;
+      /*background-color: black;*/
+  }
+  
+  .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 50px;
+  }
+   
