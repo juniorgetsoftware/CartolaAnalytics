@@ -273,13 +273,6 @@
         </div>
         <br>
         
-        <!--Excluded area - chartjs graph tests-->
-<!--        <div id="grafico" class="col-md-12">
-            <h3>Gráfico com detalhes do jogador selecionado:</h3><br>
-            <canvas id="graphJogador" height="100"></canvas>
-        </div>
-        <br>-->
-
         <div id="grafico" class="col-md-12">
             <!--<h3 id="h3Graph">Gráfico com detalhes do jogador selecionado:</h3><br>-->
             <div id="plotlyChart" ></div>
