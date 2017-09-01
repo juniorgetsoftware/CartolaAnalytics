@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-ini_set('memory_limit', '16M');
+//ini_set('memory_limit', '16M');
 
 // define variables and set to empty values
 $teamFilter = filter_input(INPUT_POST, "teamFilter", FILTER_DEFAULT, FILTER_FORCE_ARRAY);
