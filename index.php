@@ -133,7 +133,7 @@
                             <li><input type="checkbox" name="chkTimes" id="tf_BAH" value="BAH  "/>
                             <label for="tf_BAH" class="lblTimes"><img src="images/bah.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_BOT" value="BOT  "/>
-                            <label for="tf_BOT" class="lblTimes"><img src="images/bota.png"></label></li>
+                            <label for="tf_BOT" class="lblTimes"><img src="images/BOTA.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_CHA" value="CHA  "/>
                             <label for="tf_CHA" class="lblTimes"><img src="images/cha.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_COR" value="COR  "/>
