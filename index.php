@@ -39,7 +39,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="1">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

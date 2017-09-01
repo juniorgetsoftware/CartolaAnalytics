@@ -138,7 +138,7 @@ and open the template in the editor.
       /*background-color: black;*/
   }
   
-  .affix {
+/*  .affix {
       top: 0;
       width: 100%;
       z-index: 9999 !important;
@@ -146,5 +146,5 @@ and open the template in the editor.
 
   .affix + .container-fluid {
       padding-top: 50px;
-  }
+  }*/
    
