@@ -336,7 +336,7 @@ function gridJogadorLoad(pPlayerFilter){
             
             //Adjusting laytout based on screen size
             var layout;
-            if(($(window).width() < 420)) {
+            if(($(window).width() < 500)) {
                 layout = {
                     margin: {
                         l: 20,
@@ -356,7 +356,11 @@ function gridJogadorLoad(pPlayerFilter){
                         title: playerNickname,
                         titlefont: {
                             size: 16
-                        }
+                        },
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        fixedrange: true
                     }
                 };
             }
@@ -380,7 +384,11 @@ function gridJogadorLoad(pPlayerFilter){
                         title: playerNickname,
                         titlefont: {
                             size: 16
-                        }
+                        },
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        fixedrange: true
                     }
                 };
             } 
@@ -403,7 +411,11 @@ function gridJogadorLoad(pPlayerFilter){
                         title: playerNickname,
                         titlefont: {
                             size: 16
-                        }
+                        },
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        fixedrange: true
                     }
                 };
             }

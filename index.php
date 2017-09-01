@@ -30,11 +30,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
   
   <!--User Script-->
-  <script src="js/functions.js?v=0.0.1"></script>
-  <script src="js/initialisation.js?v=0.0.1"></script>
+  <script src="js/functions.js?v=0.0.2"></script>
+  <script src="js/initialisation.js?v=0.0.2"></script>
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/initialisation.css?v=0.0.1">
+  <link rel="stylesheet" type="text/css" href="css/initialisation.css?v=0.0.2">
    
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
