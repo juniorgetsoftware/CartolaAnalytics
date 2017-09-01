@@ -123,45 +123,45 @@
                     <div class="panel-body">
                         <ul class="text-center">
                             <li><input type="checkbox" name="chkTimes" id="tf_AGO" value="AGO  "/>
-                            <label for="tf_AGO" class="lblTimes"><img src="images/ago.png"></label></li>
+                            <label for="tf_AGO" class="lblTimes"><img src="images/AGO.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_CAM" value="CAM  "/>
-                            <label for="tf_CAM" class="lblTimes"><img src="images/cam.png"></label></li>
+                            <label for="tf_CAM" class="lblTimes"><img src="images/CAM.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_APR" value="APR  "/>
-                            <label for="tf_APR" class="lblTimes"><img src="images/apr.png"></label></li>
+                            <label for="tf_APR" class="lblTimes"><img src="images/APR.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_AVA" value="AVA  "/>
-                            <label for="tf_AVA" class="lblTimes"><img src="images/ava.png"></label></li>
+                            <label for="tf_AVA" class="lblTimes"><img src="images/AVA.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_BAH" value="BAH  "/>
-                            <label for="tf_BAH" class="lblTimes"><img src="images/bah.png"></label></li>
+                            <label for="tf_BAH" class="lblTimes"><img src="images/BAH.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_BOT" value="BOT  "/>
-                            <label for="tf_BOT" class="lblTimes"><img src="images/BOTA.png"></label></li>
+                            <label for="tf_BOT" class="lblTimes"><img src="images/BOT.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_CHA" value="CHA  "/>
-                            <label for="tf_CHA" class="lblTimes"><img src="images/cha.png"></label></li>
+                            <label for="tf_CHA" class="lblTimes"><img src="images/CHA.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_COR" value="COR  "/>
-                            <label for="tf_COR" class="lblTimes"><img src="images/cor.png"></label></li>
+                            <label for="tf_COR" class="lblTimes"><img src="images/COR.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_CTB" value="CTB  "/>
-                            <label for="tf_CTB" class="lblTimes"><img src="images/ctb.png"></label></li>
+                            <label for="tf_CTB" class="lblTimes"><img src="images/CTB.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_CRU" value="CRU  "/>
-                            <label for="tf_CRU" class="lblTimes"><img src="images/cru.png"></label></li>
+                            <label for="tf_CRU" class="lblTimes"><img src="images/CRU.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_FLA" value="FLA  "/>
-                            <label for="tf_FLA" class="lblTimes"><img src="images/fla.png"></label></li>
+                            <label for="tf_FLA" class="lblTimes"><img src="images/FLA.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_FLU" value="FLU  "/>
-                            <label for="tf_FLU" class="lblTimes"><img src="images/flu.png"></label></li>
+                            <label for="tf_FLU" class="lblTimes"><img src="images/FLU.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_GRE" value="GRE  "/>
-                            <label for="tf_GRE" class="lblTimes"><img src="images/gre.png"></label></li>
+                            <label for="tf_GRE" class="lblTimes"><img src="images/GRE.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_PAL" value="PAL  "/>
-                            <label for="tf_PAL" class="lblTimes"><img src="images/pal.png"></label></li>
+                            <label for="tf_PAL" class="lblTimes"><img src="images/PAL.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_PON" value="PON  "/>
-                            <label for="tf_PON" class="lblTimes"><img src="images/pon.png"></label></li>
+                            <label for="tf_PON" class="lblTimes"><img src="images/PON.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_SAN" value="SAN  "/>
-                            <label for="tf_SAN" class="lblTimes"><img src="images/san.png"></label></li>
+                            <label for="tf_SAN" class="lblTimes"><img src="images/SAN.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_SAO" value="SAO  "/>
-                            <label for="tf_SAO" class="lblTimes"><img src="images/sao.png"></label></li>
+                            <label for="tf_SAO" class="lblTimes"><img src="images/SAO.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_SPO" value="SPO  "/>
-                            <label for="tf_SPO" class="lblTimes"><img src="images/spo.png"></label></li>
+                            <label for="tf_SPO" class="lblTimes"><img src="images/SPO.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_VAS" value="VAS  "/>
-                            <label for="tf_VAS" class="lblTimes"><img src="images/vas.png"></label></li>
+                            <label for="tf_VAS" class="lblTimes"><img src="images/VAS.png"></label></li>
                             <li><input type="checkbox" name="chkTimes" id="tf_VIT" value="VIT  "/>
-                            <label for="tf_VIT" class="lblTimes"><img src="images/vit.png"></label></li>
+                            <label for="tf_VIT" class="lblTimes"><img src="images/VIT.png"></label></li>
                         </ul>
                     </div>
                 </div>
