@@ -24,12 +24,12 @@ $jsonStatus = json_decode($strStatus, true);
 $strMercado = file_get_contents("data/Mercado.json");
 $jsonMercado = json_decode($strMercado, true);
 
-//Creating an array to put filtering result
+//Creating an array to put filtered result
 $result = array();
 
 //Verify status and collect current round
 $currentStatus = $jsonStatus['status_mercado'];
-$currentRound = $jsonStatus['rodada_atual'] - 2;
+$currentRound = $jsonStatus['rodada_atual'] - 1;
 
 //Filtering according to current round or player ID
 for($x = 0; $x < count($jsonMercado); $x++) {

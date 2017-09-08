@@ -3,8 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//var myChart;
 
+//Setup for loaders on ajax requests
+$.ajaxSetup({
+    beforeSend: function() {
+        $('#modalloader').show();
+    },
+    complete: function() {
+        $('#modalloader').hide();
+    }
+});
+
+//Initializes grid for player's details
 function gridJogadorInit() {
     
         //Creating table
@@ -80,7 +90,7 @@ function gridJogadorInit() {
     } );
 }
 
-//Main grid initialisation
+//Main grid initialization
 function gridMercadoInit() {
     
     $('#mercado').DataTable( {
@@ -162,6 +172,7 @@ function gridMercadoInit() {
     } );
 }
 
+//Main grid loading
 function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter = ["Provável  ", "Dúvida    "]){
     
     $.post("DataGathering.php",
@@ -178,6 +189,262 @@ function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter = ["Provável  "
     );
 }
 
+//Executes analysis on data to return projections
+function analysisRun(pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit = 15){
+    
+    $.post("projecaoEngine.php",
+        {
+            horizon: pHorizon,
+            casafora: pCF,
+            percJog: pPercJog,
+            percPos: pPercPos,
+            percCamp: pPercCamp
+        }, 
+        function(data, status){
+            //console.log(data);
+            var jsonData = JSON.parse(data);
+            localStorage.setItem('caprojdata', data);
+            projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit);
+            }
+        );
+
+}
+
+//Loads projection's graphics
+function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit = 15){        
+            //Preparing data for graph
+            //ATA - Define labels
+            var auxlblATA = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'ATA  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //ATA - Get data
+            var auxpenMediaJATA = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'ATA  '")
+                    .Select("$.mediaj").ToArray();
+            
+            //MEI - Define labels
+            var auxlblMEI = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'MEI  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //MEI - Get data
+            var auxpenMediaJMEI = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'MEI  '")
+                    .Select("$.mediaj").ToArray();
+
+            //LAT - Define labels
+            var auxlblLAT = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'LAT  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //LAT - Get data
+            var auxpenMediaJLAT = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'LAT  '")
+                    .Select("$.mediaj").ToArray();
+
+            //ZAG - Define labels
+            var auxlblZAG = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'ZAG  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //ZAG - Get data
+            var auxpenMediaJZAG = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'ZAG  '")
+                    .Select("$.mediaj").ToArray();
+            
+            //GOL - Define labels
+            var auxlblGOL = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'GOL  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //GOL - Get data
+            var auxpenMediaJGOL = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'GOL  '")
+                    .Select("$.mediaj").ToArray();            
+
+            //TEC - Define labels
+            var auxlblTEC = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'TEC  '")
+                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            
+            //TEC - Get data
+            var auxpenMediaJTEC = Enumerable.From(jsonData.dados)
+                    .OrderByDescending("$.mediaj")
+                    .Where("$.posicao == 'TEC  '")
+                    .Select("$.mediaj").ToArray();            
+            
+            //Creating arrays to plot
+            var lblATA = []; var lblMEI = []; var lblLAT = [];
+            var lblZAG = []; var lblGOL = []; var lblTEC = [];
+            var penATA = []; var penMEI = []; var penLAT = [];
+            var penZAG = []; var penGOL = []; var penTEC = [];
+            
+            //Loading arrays
+            for (var x=0; x < pViewLimit; x++){
+                lblATA.push(auxlblATA[x]);
+                penATA.push(auxpenMediaJATA[x]);
+                lblMEI.push(auxlblMEI[x]);
+                penMEI.push(auxpenMediaJMEI[x]);
+                lblLAT.push(auxlblLAT[x]);
+                penLAT.push(auxpenMediaJLAT[x]);
+                lblZAG.push(auxlblZAG[x]);
+                penZAG.push(auxpenMediaJZAG[x]);
+                lblGOL.push(auxlblGOL[x]);
+                penGOL.push(auxpenMediaJGOL[x]);
+                lblTEC.push(auxlblTEC[x]);
+                penTEC.push(auxpenMediaJTEC[x]);
+            }
+                        
+            //Adjusting laytout
+            var layout;
+                layout = {
+                    margin: {
+                        l: 210,
+                        r: 10,
+                        b: 20,
+                        t: 10
+                    },
+                    showlegend: false,
+                    xaxis: {
+                        fixedrange: true,
+                        side: "top"
+                    },
+                    yaxis: {
+                        fixedrange: true,
+                        autorange: "reversed"
+                    },
+                    font: {
+                        size: 10
+                    }
+                };
+            
+            //Creating graph
+            var dataATA = [{
+                type: 'bar',
+                x: penATA,
+                y: lblATA,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#53b7d9"
+                },
+                hoverlabel: {
+                    bordercolor: "#ffffff",
+                    font: {
+                        color: "#ffffff"
+                    }
+                }
+            }];
+            var dataMEI = [{
+                type: 'bar',
+                x: penMEI,
+                y: lblMEI,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#e06031"
+                },
+                hoverlabel: {
+                    bordercolor: "#ffffff",
+                    font: {
+                        color: "#ffffff"
+                    }
+                }
+            }];
+            var dataLAT = [{
+                type: 'bar',
+                x: penLAT,
+                y: lblLAT,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#ffb03a"
+                }
+            }];
+            var dataZAG = [{
+                type: 'bar',
+                x: penZAG,
+                y: lblZAG,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#5e9ea0"
+                },
+                hoverlabel: {
+                    bordercolor: "#ffffff",
+                    font: {
+                        color: "#ffffff"
+                    }
+                }
+            }];
+            var dataGOL = [{
+                type: 'bar',
+                x: penGOL,
+                y: lblGOL,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#a52b2a"
+                }
+            }];
+            var dataTEC = [{
+                type: 'bar',
+                x: penTEC,
+                y: lblTEC,
+                orientation: 'h',
+                hoverinfo: 'x',
+                marker: {
+                    color: "#ce8540"
+                },
+                hoverlabel: {
+                    bordercolor: "#ffffff",
+                    font: {
+                        color: "#ffffff"
+                    }
+                }
+            }];
+        
+            Plotly.newPlot('plotlyChartATA', dataATA, layout, {displayModeBar: false});
+            Plotly.newPlot('plotlyChartMEI', dataMEI, layout, {displayModeBar: false});
+            Plotly.newPlot('plotlyChartLAT', dataLAT, layout, {displayModeBar: false});
+            Plotly.newPlot('plotlyChartZAG', dataZAG, layout, {displayModeBar: false});
+            Plotly.newPlot('plotlyChartGOL', dataGOL, layout, {displayModeBar: false});
+            Plotly.newPlot('plotlyChartTEC', dataTEC, layout, {displayModeBar: false});
+            
+            //Adding responsive feature to graphics
+            (function() {
+                
+                var d3 = Plotly.d3;
+                var WIDTH_IN_PERCENT_OF_PARENT = 100;
+                
+                var gd3 = d3.selectAll('.respChart')
+                    .style({
+                        width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+                        'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%'
+                    });
+                
+                window.onresize = function() {
+                    for(i=0;i<gd3[0].length;i++){
+                        Plotly.Plots.resize(gd3[0][i]);
+                    }
+                };
+                
+            })();
+        }
+
+//Loads player's grid and graph
 function gridJogadorLoad(pPlayerFilter){
     
     $.post("DataGathering.php",
@@ -315,24 +582,24 @@ function gridJogadorLoad(pPlayerFilter){
             //Loading Plotly Traces
             var traces = [];
             traces.push({ x: lblRounds, y: penPts, name: 'Ptos', type: 'bar', hoverinfo: 'x+y+name' });
-            traces.push({ x: lblRounds, y: penG, name: 'G', type: 'bar', visible: 'legendonly', text: penG, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penA, name: 'A', type: 'bar', visible: 'legendonly', text: penA, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penF, name: 'F', type: 'bar', visible: 'legendonly', text: penF, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penFT, name: 'FT', type: 'bar', visible: 'legendonly', text: penFT, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penFD, name: 'FD', type: 'bar', visible: 'legendonly', text: penFD, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penFF, name: 'FF', type: 'bar', visible: 'legendonly', text: penFF, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penFS, name: 'FS', type: 'bar', visible: 'legendonly', text: penFS, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penRB, name: 'RB', type: 'bar', visible: 'legendonly', text: penRB, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penSG, name: 'SG', type: 'bar', visible: 'legendonly', text: penSG, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penDD, name: 'DD', type: 'bar', visible: 'legendonly', text: penDD, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penDP, name: 'DP', type: 'bar', visible: 'legendonly', text: penDP, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penPE, name: 'PE', type: 'bar', visible: 'legendonly', text: penPE, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penI, name: 'I', type: 'bar', visible: 'legendonly', text: penI, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penPP, name: 'PP', type: 'bar', visible: 'legendonly', text: penPP, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penCV, name: 'CV', type: 'bar', visible: 'legendonly', text: penCV, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penCA, name: 'CA', type: 'bar', visible: 'legendonly', text: penCA, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penFC, name: 'FC', type: 'bar', visible: 'legendonly', text: penFC, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
-            traces.push({ x: lblRounds, y: penGS, name: 'GS', type: 'bar', visible: 'legendonly', text: penGS, textposition: 'outside', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penG, name: 'G', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penA, name: 'A', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penF, name: 'F', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penFT, name: 'FT', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penFD, name: 'FD', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penFF, name: 'FF', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penFS, name: 'FS', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penRB, name: 'RB', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penSG, name: 'SG', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penDD, name: 'DD', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penDP, name: 'DP', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penPE, name: 'PE', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penI, name: 'I', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penPP, name: 'PP', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penCV, name: 'CV', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penCA, name: 'CA', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penFC, name: 'FC', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
+            traces.push({ x: lblRounds, y: penGS, name: 'GS', type: 'bar', visible: 'legendonly', hoverinfo: 'x+y+name', outsidetextfont:{ size: 12 }});
             
             //Adjusting laytout based on screen size
             var layout;
