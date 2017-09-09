@@ -54,16 +54,77 @@
   
   <div class="row">
       
-    <div class="col-md-12">
+    <!--<div class="col-md-12">-->
         <br>
-        <h3 class="h3Mercado">Projeções</h3>
         
-        <button id="Analisa" type="button" class="btn btn-default pull-right" >Analisar</button>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a class="linkPanel" href="#typFilter" data-toggle="collapse">
+                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Tipos Projeção</a>
+                </div>
+                <div id="typFilter" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <!--<form class="form-inline">-->
+                            <div class="form-group text-center">
+                                <ul class="ulOpcoes text-center">
+                                    <li><input type="radio" name="optTipo" id="optJOG" class="form-control" checked/>
+                                    <label for="optJOG" class="lblTipo"><strong>Jogador</strong></label></li>
+                                    <li><input type="radio" name="optTipo" id="optPOS" class="form-control"/>
+                                    <label for="optPOS" class="lblTipo"><strong>Posicao</strong></label></li>
+                                    <li><input type="radio" name="optTipo" id="optCAM" class="form-control"/>
+                                    <label for="optCAM" class="lblTipo"><strong>Jog + Pos + Camp.</strong></label></li>
+                                </ul>
+                            </div>
+                        <!--</form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a class="linkPanel" href="#horFilter" data-toggle="collapse">
+                        <i style="font-size:22px" class="fa">&#xf013;</i> Opções de Cálculo</a>
+                </div>
+                <div id="horFilter" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <form class="form-inline text-center">
+                            <div class="form-group">
+                                <ul class="ulCasaFora">
+                                    <li><input type="checkbox" name="chkCasaFora" id="CF" checked/>
+                                    <label for="CF" class="lblCF"> <strong>Avalia mando de campo?</strong></label></li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label class="lblQtd" for="selhorizonte">Qtd. Rodadas:</label>
+                                <select class="form-control" id="selhorizonte">
+                                    <option>6</option>
+                                    <option>8</option>
+                                    <option>10</option>
+                                    <option>12</option>
+                                    <option>14</option>
+                                    <option>16</option>
+                                    <option>18</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 text-center">
+            <button id="Analisa" type="button" class="btn btn-default btn-lg" >Calcular</button>
+        </div>
+        <br><br>
         
-    </div>  
+            
+            
+
+        
+    <!--</div>-->  
     
    <div class="col-md-12 separa">
-        <br>
+        <!--<br>-->
     </div>
       
     <div class="col-md-4">
