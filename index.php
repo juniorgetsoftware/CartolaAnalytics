@@ -13,6 +13,9 @@
   <!--Font Awesome CSS file-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
+  <!--User CSS-->
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=0.0.3">
+  
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
@@ -33,9 +36,6 @@
   <script src="js/functions.js?v=0.0.3"></script>
   <script src="js/index.js?v=0.0.3"></script>
   
-  <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=0.0.3">
-   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -48,9 +48,10 @@
         <div class="col-md-12">
             <br>
             <h3 class="h3Mercado">Mercado</h3>
-
-            <button id="Limpa" type="button" class="btn btn-default pull-right" >Limpa Filtros</button>
-
+            <div class="btn-group pull-right">
+                <button id="Filtra" type="button" class="btn btn-default" >Filtrar</button>
+                <button id="Limpa" type="button" class="btn btn-default" >Limpa Filtros</button>
+            </div>
         </div>  
 
         <div class="col-md-12 separa">
@@ -110,7 +111,7 @@
                 </div>
             </div>
         </div>  
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="linkPanel" href="#posFilter" data-toggle="collapse">
                         <i style="font-size:22px" class="fa">&#xf0b0;</i> Posições</a>
@@ -135,7 +136,30 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a class="linkPanel" href="#stsFilter" data-toggle="collapse">
+                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Status</a>
+                </div>
+                <div id="stsFilter" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <ul class="ulPosicoes text-center">
+                            <li><input type="checkbox" name="chkStatus" id="pf_PRO" value="Provável  " checked/>
+                            <label for="pf_PRO" class="lblStatus"><strong>PRV</strong></label></li>
+                            <li><input type="checkbox" name="chkStatus" id="pf_DUV" value="Dúvida    " checked/>
+                            <label for="pf_DUV" class="lblStatus"><strong>DUV</strong></label></li>
+                            <li><input type="checkbox" name="chkStatus" id="pf_CON" value="Contundido"/>
+                            <label for="pf_CON" class="lblStatus"><strong>CON</strong></label></li>
+                            <li><input type="checkbox" name="chkStatus" id="pf_SUS" value="Suspenso  "/>
+                            <label for="pf_SUS" class="lblStatus"><strong>SUS</strong></label></li>
+                            <li><input type="checkbox" name="chkStatus" id="pf_NUL" value="Nulo      "/>
+                            <label for="pf_NUL" class="lblStatus"><strong>NUL</strong></label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div id="tables" class="col-md-12">
             <table id="mercado" class="display nowrap compact" cellspacing="0" width="100%">
                 <thead>

@@ -91,7 +91,7 @@ and open the template in the editor.
     transform: scale(1);
   }
 
-  /*Style configuration for positions checkboxes*/
+  /*Style configuration for position's checkboxes*/
   label.lblPosicoes {
     /*border: 1px solid #eee;*/
     padding: 10px;
@@ -115,6 +115,31 @@ and open the template in the editor.
     content: "\f05d";
     color: #5fba7d;
   }
+  
+  /*Style configuration for status's checkboxes*/
+  label.lblStatus {
+    /*border: 1px solid #eee;*/
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 160%;
+    width: 100px;
+    color: black;
+  }
+
+  label.lblStatus:before {
+    
+    font-family: FontAwesome;
+    letter-spacing: 10px;
+    color: lightgrey;
+    content: "\f10c";
+  }
+
+  :checked + label.lblStatus:before {
+    content: "\f05d";
+    color: #5fba7d;
+  }  
   
   a.linkPanel {
       display: block;

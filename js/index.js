@@ -14,12 +14,14 @@ $(document).ready(function() {
         $('#jogador').addClass("compact");
         $('#teamFilter').addClass("in");
         $('#posFilter').addClass("in");
+        $('#stsFilter').addClass("in");
         $('#graphJogador').attr("height",80);
     }else{
         $('#mercado').removeClass("compact");
         $('#jogador').removeClass("compact");
         $('#teamFilter').removeClass("in");
         $('#posFilter').removeClass("in");
+        $('#stsFilter').removeClass("in");
         $('#graphJogador').attr("height",180);
     }
 
@@ -34,6 +36,7 @@ $(document).ready(function() {
             $('#jogador').removeClass("compact");
             $('#teamFilter').removeClass("in");
             $('#posFilter').removeClass("in");
+            $('#stsFilter').removeClass("in");
         }
     });
     
@@ -42,7 +45,7 @@ $(document).ready(function() {
     gridJogadorInit();
     
     //DataGrid Loading 
-    gridMercadoLoad(null,null);
+    gridMercadoLoad(null,null,["Provável  ", "Dúvida    "]);
 
     //Menu Link adjust
     $('#menuHome').addClass("active");

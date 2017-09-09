@@ -7,9 +7,14 @@
 $(":checkbox").change(function(){
        checkedValueTimes = $(":checkbox[name='chkTimes']:checked").map(function (){return $(this).val();}).get();
        checkedValuePosicoes = $(":checkbox[name='chkPosicoes']:checked").map(function (){return $(this).val();}).get();
-       gridMercadoLoad(checkedValueTimes,checkedValuePosicoes);
+       checkedValueStatus = $(":checkbox[name='chkStatus']:checked").map(function (){return $(this).val();}).get();
 });
     
 $('#Limpa').click(function() {
     $('input[type="checkbox"]:checked').attr('checked',false).change();
+    gridMercadoLoad(checkedValueTimes,checkedValuePosicoes,checkedValueStatus);
+});
+
+$('#Filtra').click(function() {
+    gridMercadoLoad(checkedValueTimes,checkedValuePosicoes,checkedValueStatus);
 });

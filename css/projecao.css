@@ -46,64 +46,27 @@ and open the template in the editor.
     display: inline-block;
   }
 
-  input[type="checkbox"] {
+  input[type="radio"] {
     display: none;
   }
 
-  /*Style configuration for teams checkboxes*/
-  label.lblTimes {
-    border: 1px solid #fff;
-    padding: 10px;
-    display: block;
-    position: relative;
-    margin: 10px;
-    cursor: pointer;
+  input[type="checkbox"] {
+    display: none;
   }
-
-  label.lblTimes:before {
-    background-color: white;
-    color: white;
-    content: " ";
-    display: block;
-    border-radius: 50%;
-    border: 1px solid white;
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    transition-duration: 0.4s;
-    transform: scale(0);
-  }
-
-  label.lblTimes img {
-    height: 30px;
-    width: 30px;
-    transition-duration: 0.2s;
-    transform-origin: 50% 50%;
-  }
-
-  :checked + label.lblTimes:before {
-    content: "✓";
-    background-color: #5fba7d;
-    transform: scale(1);
-  }
-
-  /*Style configuration for positions checkboxes*/
-  label.lblPosicoes {
+  
+/*Style configuration for status's checkboxes*/
+  label.lblTipo {
     /*border: 1px solid #eee;*/
     padding: 10px;
     display: inline-block;
     margin: 10px;
     cursor: pointer;
     font-size: 160%;
-    width: 100px;
+    /*width: 100px;*/
     color: black;
   }
 
-  label.lblPosicoes:before {
+  label.lblTipo:before {
     
     font-family: FontAwesome;
     letter-spacing: 10px;
@@ -111,9 +74,60 @@ and open the template in the editor.
     content: "\f10c";
   }
 
-  :checked + label.lblPosicoes:before {
+  :checked + label.lblTipo:before {
+    content: "\f192";
+    color: #5fba7d;
+  }
+
+  .form-group {
+      margin-bottom: 0px;
+  }
+  
+  .col-md-2 {
+      padding-right: 30px;
+  }
+  
+  @media (max-width: 500px) {
+    .col-md-2 {
+      padding-right: 15px; 
+    }
+  }
+  
+/*Style configuration for status's checkboxes*/
+  label.lblCF {
+    /*border: 1px solid #eee;*/
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 160%;
+    /*width: 100px;*/
+    color: black;
+  }
+
+  label.lblCF:before {
+    
+    font-family: FontAwesome;
+    letter-spacing: 10px;
+    color: lightgrey;
+    content: "\f10c";
+  }
+
+  :checked + label.lblCF:before {
     content: "\f05d";
     color: #5fba7d;
+  }  
+  
+  /*Style configuration for round's quantity*/
+  label.lblQtd {
+    /*border: 1px solid #eee;*/
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 160%;
+    /*width: 100px;*/
+    color: black;
   }
   
   a.linkPanel {
@@ -136,20 +150,6 @@ and open the template in the editor.
       margin: 0px;
       padding: 5px;
       /*background-color: black;*/
-  }
-  
-  .modal-header, h4, .close {
-      background-color: #48c1c1;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
-  }
-  .modal-footer {
-      background-color: #f2f2f2;
-  }
-  
-  .projinfo {
-      text-align: center
   }
   
   #modalloader {

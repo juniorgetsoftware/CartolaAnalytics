@@ -10,9 +10,11 @@ $(document).ready(function() {
     //Decides whether compact mode or not for grid lines
     //Decides whether panels for filters are expanded or not
     if($(window).width() > 1024) {
-        
+        $('#typFilter').addClass("in");
+        $('#horFilter').addClass("in");        
     }else{
-        
+        $('#typFilter').removeClass("in");
+        $('#horFilter').removeClass("in");        
     }
 
     //Same as above, but instead of at initialisation, 
@@ -21,7 +23,8 @@ $(document).ready(function() {
         if($(window).width() > 1024) {
         
         }else{
-
+        $('#typFilter').removeClass("in");
+        $('#horFilter').removeClass("in");        
         }
     });
         

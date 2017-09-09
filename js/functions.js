@@ -173,7 +173,7 @@ function gridMercadoInit() {
 }
 
 //Main grid loading
-function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter = ["Provável  ", "Dúvida    "]){
+function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter){
     
     $.post("DataGathering.php",
         {
