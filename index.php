@@ -7,10 +7,10 @@
   <link rel="icon" href="images/CartolaAnalyticsOriginalLogo.gif">
   
   <!--Icons for iphone-->
-  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-icon-144x144.png" />
   
   <!--Bootstrap and dataTables CSS files-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
