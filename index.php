@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/CartolaAnalyticsOriginalLogo.gif">
   
+  <!--Icons for iphone-->
+  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png" />
+  
   <!--Bootstrap and dataTables CSS files-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/b-1.4.0/b-colvis-1.4.0/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.3.0/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>

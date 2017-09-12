@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 12, 2017, 11:27:35 AM
+    Author     : Ricardo
+*/
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      /*background-color: black;*/
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      /*width: 100%;  Set width to 100%*/ 
+      margin: auto;
+      /*min-height:200px;*/
+      max-height: 300px !important;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  .logo {
+      display: inline-block;
+      margin: 0px;
+      padding: 5px;
+      /*background-color: black;*/
+  }
+  
+  
+  
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 5500px}
+  
+  /* Set gray background color and 100% height */
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f2f2f2;
+    height: 100%;
+  }
+  
+/*   On small screens, set height to 'auto' for sidenav and grid 
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }*/
