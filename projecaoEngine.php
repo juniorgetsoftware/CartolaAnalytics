@@ -69,31 +69,59 @@ foreach ($provaveis as $provavel) {
     //Search Market for information to calculate indicators
     for($x = 0; $x < count($jsonMercadoFiltered); $x++) {
         
-        //Looking for played rounds for the current player
-        if  (
-                ($jsonMercadoFiltered[$x]['Atleta_ID'] == $provavel['Atleta_ID'])
-                && ($jsonMercadoFiltered[$x]['TimeAbrev'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['CASA_D'] : $jsonMercadoFiltered[$x]['FORA_D']))
-            ){
-                $auxPtsJog[] = $jsonMercadoFiltered[$x]['Pts_Ult'];
+        if ($casafora[0] == 'true'){
+            //Looking for played rounds for the current player
+            if  (
+                    ($jsonMercadoFiltered[$x]['Atleta_ID'] == $provavel['Atleta_ID'])
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['CASA_D'] : $jsonMercadoFiltered[$x]['FORA_D']))
+                ){
+                    $auxPtsJog[] = $jsonMercadoFiltered[$x]['Pts_Ult'];
+            }
+
+            //Looking for played rounds for the current player's position
+            if  (
+                    ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] == $provavel['TimeAbrev'])
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['CASA_D'] : $jsonMercadoFiltered[$x]['FORA_D']))
+                ){
+                    $auxPtsPos1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
+            }
+
+            //Looking for rounds played by opponents, to check points given for that specific position
+            if  (
+                    ($provavel['ADV'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['FORA_D'] : $jsonMercadoFiltered[$x]['CASA_D']))
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] != $provavel['ADV'])
+                    && ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
+                ){
+                    $auxPtsCed1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
+            }
         }
-        
-        //Looking for played rounds for the current player's position
-        if  (
-                ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
-                && ($jsonMercadoFiltered[$x]['TimeAbrev'] == $provavel['TimeAbrev'])
-                && ($jsonMercadoFiltered[$x]['TimeAbrev'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['CASA_D'] : $jsonMercadoFiltered[$x]['FORA_D']))
-            ){
-                $auxPtsPos1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
+        else {
+            //Looking for played rounds for the current player
+            if  (
+                    ($jsonMercadoFiltered[$x]['Atleta_ID'] == $provavel['Atleta_ID'])
+                ){
+                    $auxPtsJog[] = $jsonMercadoFiltered[$x]['Pts_Ult'];
+            }
+
+            //Looking for played rounds for the current player's position
+            if  (
+                    ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] == $provavel['TimeAbrev'])
+                ){
+                    $auxPtsPos1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
+            }
+
+            //Looking for rounds played by opponents, to check points given for that specific position
+            if  (
+                    (($provavel['ADV'] == $jsonMercadoFiltered[$x]['CASA_D']) || ($provavel['ADV'] == $jsonMercadoFiltered[$x]['FORA_D']))
+                    && ($jsonMercadoFiltered[$x]['TimeAbrev'] != $provavel['ADV'])
+                    && ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
+                ){
+                    $auxPtsCed1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
+            }            
         }
-        
-        //Looking for rounds played by opponents, to check points given for that specific position
-        if  (
-                ($provavel['ADV'] == ($provavel['CF']=="CASA" ? $jsonMercadoFiltered[$x]['FORA_D'] : $jsonMercadoFiltered[$x]['CASA_D']))
-                && ($jsonMercadoFiltered[$x]['TimeAbrev'] != $provavel['ADV'])
-                && ($jsonMercadoFiltered[$x]['Pos'] == $provavel['Pos'])
-            ){
-                $auxPtsCed1[] = array("rodada" => $jsonMercadoFiltered[$x]['Rodada_ID'], "Ptos" => $jsonMercadoFiltered[$x]['Pts_Ult']);
-        }
+
     }
     
     //Calculates the average of earned points for the current player
@@ -133,7 +161,7 @@ foreach ($provaveis as $provavel) {
 }
 
 //Building answer
-$resultAnalysis = array("horizonte" => $horizon[0], "rodada" => $currentRound, "CF" => $casafora[0], "pesoj" => $percJog[0], "pesop" => $percPos[0], "pesoc" => $percCamp[0], "dados" => $data);
+$resultAnalysis = array("horizonte" => $horizon[0], "rodada" => $currentRound+1, "CF" => $casafora[0], "pesoj" => $percJog[0], "pesop" => $percPos[0], "pesoc" => $percCamp[0], "dados" => $data);
 
 //Answering request
 echo json_encode($resultAnalysis);

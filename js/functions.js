@@ -190,7 +190,7 @@ function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter){
 }
 
 //Executes analysis on data to return projections
-function analysisRun(pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit = 15){
+function analysisRun(pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pInfo, pViewLimit = 12){
     
     $.post("projecaoEngine.php",
         {
@@ -204,109 +204,77 @@ function analysisRun(pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit = 
             //console.log(data);
             var jsonData = JSON.parse(data);
             localStorage.setItem('caprojdata', data);
-            projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit);
+            projGraphLoad(jsonData, pInfo, pViewLimit);
             }
         );
 
 }
 
 //Loads projection's graphics
-function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, pViewLimit = 15){        
-            //Preparing data for graph
-            //ATA - Define labels
-            var auxlblATA = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'ATA  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
-            
-            //ATA - Get data
-            var auxpenMediaJATA = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'ATA  '")
-                    .Select("$.mediaj").ToArray();
-            
-            //MEI - Define labels
-            var auxlblMEI = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'MEI  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
-            
-            //MEI - Get data
-            var auxpenMediaJMEI = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'MEI  '")
-                    .Select("$.mediaj").ToArray();
+function projGraphLoad(jsonData, pInfo, pViewLimit = 12){        
 
-            //LAT - Define labels
-            var auxlblLAT = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'LAT  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
+            //Option selected
+            info = pInfo;
+            auxlbl = [];
+            auxpen = [];
             
-            //LAT - Get data
-            var auxpenMediaJLAT = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'LAT  '")
-                    .Select("$.mediaj").ToArray();
+            auxpos = ["$.posicao == 'ATA  '","$.posicao == 'MEI  '","$.posicao == 'LAT  '","$.posicao == 'ZAG  '","$.posicao == 'GOL  '","$.posicao == 'TEC  '"]
+            
+            //Loading data for charts based on option selected
+            if (info != "$.mediap"){
 
-            //ZAG - Define labels
-            var auxlblZAG = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'ZAG  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
-            
-            //ZAG - Get data
-            var auxpenMediaJZAG = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'ZAG  '")
-                    .Select("$.mediaj").ToArray();
-            
-            //GOL - Define labels
-            var auxlblGOL = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'GOL  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
-            
-            //GOL - Get data
-            var auxpenMediaJGOL = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'GOL  '")
-                    .Select("$.mediaj").ToArray();            
+                var ylabel = "x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '";
 
-            //TEC - Define labels
-            var auxlblTEC = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'TEC  '")
-                    .Select("x => '(' + x.status.substr(0,1) + ') ' + x.nome.trim() + ' - ' + x.clube.trim() + ' (' + x.qtdJogos + ') ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '").ToArray();
-            
-            //TEC - Get data
-            var auxpenMediaJTEC = Enumerable.From(jsonData.dados)
-                    .OrderByDescending("$.mediaj")
-                    .Where("$.posicao == 'TEC  '")
-                    .Select("$.mediaj").ToArray();            
-            
-            //Creating arrays to plot
-            var lblATA = []; var lblMEI = []; var lblLAT = [];
-            var lblZAG = []; var lblGOL = []; var lblTEC = [];
-            var penATA = []; var penMEI = []; var penLAT = [];
-            var penZAG = []; var penGOL = []; var penTEC = [];
-            
-            //Loading arrays
-            for (var x=0; x < pViewLimit; x++){
-                lblATA.push(auxlblATA[x]);
-                penATA.push(auxpenMediaJATA[x]);
-                lblMEI.push(auxlblMEI[x]);
-                penMEI.push(auxpenMediaJMEI[x]);
-                lblLAT.push(auxlblLAT[x]);
-                penLAT.push(auxpenMediaJLAT[x]);
-                lblZAG.push(auxlblZAG[x]);
-                penZAG.push(auxpenMediaJZAG[x]);
-                lblGOL.push(auxlblGOL[x]);
-                penGOL.push(auxpenMediaJGOL[x]);
-                lblTEC.push(auxlblTEC[x]);
-                penTEC.push(auxpenMediaJTEC[x]);
+                for(var i=0; i<6; i++){
+                    auxlbl[i] = Enumerable.From(jsonData.dados)
+                        .OrderByDescending(pInfo)
+                        .Where(auxpos[i])
+                        .Select(ylabel).ToArray();
+
+                    auxpen[i] = Enumerable.From(jsonData.dados)
+                        .OrderByDescending(pInfo)
+                        .Where(auxpos[i])
+                        .Select(pInfo).ToArray();
+                }
             }
-                        
+            else {
+                
+                var ylabel = "x => x.clube.trim() + ' - ' + x.casa.trim() + ' x ' + x.fora.trim() + ' '";
+                
+                posData = [];
+                
+                for(var i=0; i<6; i++){
+                    
+                    posData[i] = Enumerable.From(jsonData.dados)
+                        .Where(auxpos[i])
+                        .GroupBy("$.clube", null, function(key, g){
+                                return {clube: key, posicao: g.source[0].posicao, mediap: g.source[0].mediap, casa: g.source[0].casa, fora: g.source[0].fora}
+                        }).ToArray();
+                    
+                    auxlbl[i] = Enumerable.From(posData[i])
+                        .OrderByDescending(pInfo)
+                        .Where(auxpos[i])
+                        .Select(ylabel).ToArray();
+
+                    auxpen[i] = Enumerable.From(posData[i])
+                        .OrderByDescending(pInfo)
+                        .Where(auxpos[i])
+                        .Select(pInfo).ToArray();
+                }
+            }
+            
+            //Selecting data based on pen's number limit
+            lbl = Array(6);
+            pen = Array(6);
+            for (var i=0; i < 6; i++) {
+                lbl[i] = Array(pViewLimit);
+                pen[i] = Array(pViewLimit);
+                for (var j=0; j < pViewLimit; j++) {
+                    lbl[i][j] = auxlbl[i][j];
+                    pen[i][j] = auxpen[i][j];
+                }
+            }
+
             //Adjusting laytout
             var layout;
                 layout = {
@@ -330,11 +298,11 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
                     }
                 };
             
-            //Creating graph
+            //Creating chart data information
             var dataATA = [{
                 type: 'bar',
-                x: penATA,
-                y: lblATA,
+                x: pen[0],
+                y: lbl[0],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -349,8 +317,8 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
             }];
             var dataMEI = [{
                 type: 'bar',
-                x: penMEI,
-                y: lblMEI,
+                x: pen[1],
+                y: lbl[1],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -365,8 +333,8 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
             }];
             var dataLAT = [{
                 type: 'bar',
-                x: penLAT,
-                y: lblLAT,
+                x: pen[2],
+                y: lbl[2],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -375,8 +343,8 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
             }];
             var dataZAG = [{
                 type: 'bar',
-                x: penZAG,
-                y: lblZAG,
+                x: pen[3],
+                y: lbl[3],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -391,8 +359,8 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
             }];
             var dataGOL = [{
                 type: 'bar',
-                x: penGOL,
-                y: lblGOL,
+                x: pen[4],
+                y: lbl[4],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -401,8 +369,8 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
             }];
             var dataTEC = [{
                 type: 'bar',
-                x: penTEC,
-                y: lblTEC,
+                x: pen[5],
+                y: lbl[5],
                 orientation: 'h',
                 hoverinfo: 'x',
                 marker: {
@@ -442,6 +410,7 @@ function projGraphLoad(jsonData, pHorizon, pCF, pPercJog, pPercPos, pPercCamp, p
                 };
                 
             })();
+            
         }
 
 //Loads player's grid and graph

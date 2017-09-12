@@ -6,26 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/CartolaAnalyticsOriginalLogo.gif">
   
-  <!--Bootstrap and dataTables CSS files-->
+  <!--Bootstrap CSS file-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/b-1.4.0/b-colvis-1.4.0/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.3.0/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-  
+      
   <!--Font Awesome CSS file-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <!--Chartist CSS file-->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <!--Slider CSS file-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" integrity="sha256-qxOBz0Std9dtkon+cnUi5A7HTHO0CLbp9DnkxsJuIXc=" crossorigin="anonymous" />
   
+  <!--User CSS-->
+  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.4">
+
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
-  <!--Bootstrap and dataTables Scripts-->
+  <!--Bootstrap Script-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/b-1.4.0/b-colvis-1.4.0/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.3.0/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
-  
-  <!--Chart.js Script-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" integrity="sha256-VNbX9NjQNRW+Bk02G/RO6WiTKuhncWI4Ey7LkSbE+5s=" crossorigin="anonymous"></script>
-
+    
   <!--Plotly Script-->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   
@@ -35,16 +33,13 @@
   <!--LINQ for Javascript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
   
-  <!--Javascript to include HTML-->
-  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <!--Slider Script-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js" integrity="sha256-3nkG8q6ajh1K1fHC3hi142DykXlM5TA2xX3OzP/NNJM=" crossorigin="anonymous"></script>
   
-  <!--User Script-->
-  <script src="js/functions.js?v=0.0.3"></script>
-  <script src="js/projecao.js?v=0.0.3"></script>
-  
-  <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.3">
-    
+  <!--User Scripts-->
+  <script src="js/functions.js?v=0.0.4"></script>
+  <script src="js/projecao.js?v=0.0.4"></script>
+      
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -54,25 +49,24 @@
   
   <div class="row">
       
-    <!--<div class="col-md-12">-->
         <br>
         
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="linkPanel" href="#typFilter" data-toggle="collapse">
-                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Tipos Projeção</a>
+                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Tipos de Projeção</a>
                 </div>
                 <div id="typFilter" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <!--<form class="form-inline">-->
                             <div class="form-group text-center">
                                 <ul class="ulOpcoes text-center">
-                                    <li><input type="radio" name="optTipo" id="optJOG" class="form-control" checked/>
+                                    <li><input type="radio" name="optTipo" id="optJOG" value="$.mediaj" class="form-control" checked/>
                                     <label for="optJOG" class="lblTipo"><strong>Jogador</strong></label></li>
-                                    <li><input type="radio" name="optTipo" id="optPOS" class="form-control"/>
+                                    <li><input type="radio" name="optTipo" id="optPOS" value="$.mediap" class="form-control"/>
                                     <label for="optPOS" class="lblTipo"><strong>Posicao</strong></label></li>
-                                    <li><input type="radio" name="optTipo" id="optCAM" class="form-control"/>
-                                    <label for="optCAM" class="lblTipo"><strong>Jog + Pos + Camp.</strong></label></li>
+                                    <li><input type="radio" name="optTipo" id="optCAM" value="$.mediag" class="form-control"/>
+                                    <label for="optCAM" class="lblTipo"><strong>Global</strong></label></li>
                                 </ul>
                             </div>
                         <!--</form>-->
@@ -80,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="linkPanel" href="#horFilter" data-toggle="collapse">
                         <i style="font-size:22px" class="fa">&#xf013;</i> Opções de Cálculo</a>
@@ -91,11 +85,11 @@
                             <div class="form-group">
                                 <ul class="ulCasaFora">
                                     <li><input type="checkbox" name="chkCasaFora" id="CF" checked/>
-                                    <label for="CF" class="lblCF"> <strong>Avalia mando de campo?</strong></label></li>
+                                    <label for="CF" class="lblCF"> <strong>Avalia mando?</strong></label></li>
                                 </ul>
                             </div>
                             <div class="form-group">
-                                <label class="lblQtd" for="selhorizonte">Qtd. Rodadas:</label>
+                                <label class="lblQtd" for="selhorizonte">Rodadas:</label>
                                 <select class="form-control" id="selhorizonte">
                                     <option>6</option>
                                     <option>8</option>
@@ -107,22 +101,20 @@
                                     <option>20</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label class="lblQtd">Visão global:</label> <input id="pesos" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <button id="Analisa" type="button" class="btn btn-default" >Calcular</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-2 text-center">
-            <button id="Analisa" type="button" class="btn btn-default btn-lg" >Calcular</button>
-        </div>
-        <br><br>
-        
-            
-            
 
-        
-    <!--</div>-->  
-    
+        <br><br>
+            
    <div class="col-md-12 separa">
         <!--<br>-->
     </div>
@@ -199,23 +191,6 @@
 
 </body>
 
-<script src="js/projecaofooter.js?v=0.0.3"></script>
-<!--<script>
-    
-    $('#Analisa').click(function() {
-        //Running analysis
-        analysisRun(6, true, 0.4, 0.4, 0.2, 10);
-    });
-    
-    //Verify if projection data is available in localstorage
-    var retrievedObject = localStorage.getItem('caprojdata');
-    if (retrievedObject){
-        projGraphLoad(JSON.parse(retrievedObject), 6, true, 0.4, 0.4, 0.2, 10);
-    }
-    else{
-        analysisRun(6, true, 0.4, 0.4, 0.2, 10);
-    }
-    
-</script>-->
+<script src="js/projecaofooter.js?v=0.0.4"></script>
 
 </html>

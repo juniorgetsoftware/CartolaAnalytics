@@ -82,17 +82,7 @@ and open the template in the editor.
   .form-group {
       margin-bottom: 0px;
   }
-  
-  .col-md-2 {
-      padding-right: 30px;
-  }
-  
-  @media (max-width: 500px) {
-    .col-md-2 {
-      padding-right: 15px; 
-    }
-  }
-  
+   
 /*Style configuration for status's checkboxes*/
   label.lblCF {
     /*border: 1px solid #eee;*/
@@ -128,6 +118,23 @@ and open the template in the editor.
     font-size: 160%;
     /*width: 100px;*/
     color: black;
+  }
+  
+  .btn {
+      margin: 15px;
+      margin-top: 22px;
+  }
+  
+  #pesoscss .slider-track-high {
+      background: #c2d6d6;
+  }
+  
+  #pesoscss .slider-track-low {
+      background: #85adad;
+  }
+  
+  #pesoscss .slider-selection {
+      background: #a3c2c2;
   }
   
   a.linkPanel {

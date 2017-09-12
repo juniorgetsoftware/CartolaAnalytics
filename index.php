@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=0.0.3">
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=0.0.4">
   
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,9 +32,9 @@
   <!--LINQ for Javascript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
   
-  <!--User Script-->
-  <script src="js/functions.js?v=0.0.3"></script>
-  <script src="js/index.js?v=0.0.3"></script>
+  <!--User Scripts-->
+  <script src="js/functions.js?v=0.0.4"></script>
+  <script src="js/index.js?v=0.0.4"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -256,6 +256,6 @@
 
 </body>
 
-<script src="js/indexfooter.js?v=0.0.3"></script>
+<script src="js/indexfooter.js?v=0.0.4"></script>
 
 </html>
