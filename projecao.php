@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" integrity="sha256-qxOBz0Std9dtkon+cnUi5A7HTHO0CLbp9DnkxsJuIXc=" crossorigin="anonymous" />
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.5">
+  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.6">
 
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -48,8 +48,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js" integrity="sha256-3nkG8q6ajh1K1fHC3hi142DykXlM5TA2xX3OzP/NNJM=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/functions.js?v=0.0.5"></script>
-  <script src="js/projecao.js?v=0.0.5"></script>
+  <script src="js/functions.js?v=0.0.6"></script>
+  <script src="js/projecao.js?v=0.0.6"></script>
       
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -200,6 +200,6 @@
 
 </body>
 
-<script src="js/projecaofooter.js?v=0.0.5"></script>
+<script src="js/projecaofooter.js?v=0.0.6"></script>
 
 </html>
