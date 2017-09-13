@@ -119,8 +119,6 @@
             </div>
         </div>
 
-        <br><br>
-            
    <div class="col-md-12 separa">
         <!--<br>-->
     </div>
