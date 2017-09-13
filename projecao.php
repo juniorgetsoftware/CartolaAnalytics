@@ -4,13 +4,18 @@
   <title>Cartola Analytics</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/CartolaAnalyticsOriginalLogo.gif">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   
-  <!--Icons for iphone-->
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-icon-144x144.png" />
+  <!--iPhone icons-->
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180x180.png" />
   
   <!--Bootstrap CSS file-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" integrity="sha256-qxOBz0Std9dtkon+cnUi5A7HTHO0CLbp9DnkxsJuIXc=" crossorigin="anonymous" />
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.4">
+  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.5">
 
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,8 +48,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js" integrity="sha256-3nkG8q6ajh1K1fHC3hi142DykXlM5TA2xX3OzP/NNJM=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/functions.js?v=0.0.4"></script>
-  <script src="js/projecao.js?v=0.0.4"></script>
+  <script src="js/functions.js?v=0.0.5"></script>
+  <script src="js/projecao.js?v=0.0.5"></script>
       
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -94,9 +99,9 @@
                                     <label for="CF" class="lblCF"> <strong>Avalia mando?</strong></label></li>
                                 </ul>
                             </div>
-                            <div class="form-group">
-                                <label class="lblQtd" for="selhorizonte">Rodadas:</label>
-                                <select class="form-control" id="selhorizonte">
+                            <div class="form-group text-center">
+                                <label class="lblQtd" for="selhorizonte">N. Rodadas:</label>
+                                <select class="form-control text-center" id="selhorizonte">
                                     <option>6</option>
                                     <option>8</option>
                                     <option>10</option>
@@ -195,6 +200,6 @@
 
 </body>
 
-<script src="js/projecaofooter.js?v=0.0.4"></script>
+<script src="js/projecaofooter.js?v=0.0.5"></script>
 
 </html>

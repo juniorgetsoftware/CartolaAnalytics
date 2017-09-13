@@ -82,7 +82,12 @@ and open the template in the editor.
   .form-group {
       margin-bottom: 0px;
   }
-   
+  
+  .form-control {
+      width: 60px;
+      display: inline-block;
+  }
+  
 /*Style configuration for status's checkboxes*/
   label.lblCF {
     /*border: 1px solid #eee;*/
@@ -123,6 +128,14 @@ and open the template in the editor.
   .btn {
       margin: 15px;
       margin-top: 22px;
+      margin-left: 22px;
+  }
+  
+  @media (max-width: 500px) {
+    .btn {
+        margin: 22px;
+        margin-bottom: 15px;
+    }
   }
   
   #pesoscss .slider-track-high {
@@ -180,6 +193,7 @@ and open the template in the editor.
   #modalloader {
     display: none;
   }
+  
   
 /*  .affix {
       top: 0;
