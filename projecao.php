@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" integrity="sha256-qxOBz0Std9dtkon+cnUi5A7HTHO0CLbp9DnkxsJuIXc=" crossorigin="anonymous" />
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.6">
+  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=0.0.7">
 
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -48,8 +48,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js" integrity="sha256-3nkG8q6ajh1K1fHC3hi142DykXlM5TA2xX3OzP/NNJM=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/functions.js?v=0.0.6"></script>
-  <script src="js/projecao.js?v=0.0.6"></script>
+  <script src="js/projecaofunctions.js?v=0.0.7"></script>
+  <script src="js/projecao.js?v=0.0.7"></script>
       
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -65,7 +65,8 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="linkPanel" href="#typFilter" data-toggle="collapse">
-                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Tipos de Projeção</a>
+                        <i style="font-size:22px" class="fa">&#xf0b0;</i> Visualização</a>
+                        <a href="help.php#tipos" class="pull-right"><i class="fa fa-question-circle fa-2x"></i></a>
                 </div>
                 <div id="typFilter" class="panel-collapse collapse in">
                     <div class="panel-body">
@@ -88,7 +89,8 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="linkPanel" href="#horFilter" data-toggle="collapse">
-                        <i style="font-size:22px" class="fa">&#xf013;</i> Opções de Cálculo</a>
+                        <i style="font-size:22px" class="fa">&#xf013;</i> Análise</a>
+                        <a href="help.php#parametros" class="pull-right"><i class="fa fa-question-circle fa-2x"></i></a>
                 </div>
                 <div id="horFilter" class="panel-collapse collapse in">
                     <div class="panel-body">
@@ -113,10 +115,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="lblQtd">Visão global:</label> <input id="pesos" type="text"/>
+                                <label class="lblQtd">Dist. global:</label> <input id="pesos" type="text"/>
                             </div>
                             <div class="form-group">
-                                <button id="Analisa" type="button" class="btn btn-default" >Calcular</button>
+                                <button id="Analisa" type="button" class="btn btn-default" >Analisar</button>
                             </div>
                         </form>
                     </div>
@@ -200,6 +202,6 @@
 
 </body>
 
-<script src="js/projecaofooter.js?v=0.0.6"></script>
+<script src="js/projecaofooter.js?v=0.0.7"></script>
 
 </html>

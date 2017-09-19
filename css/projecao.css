@@ -150,8 +150,25 @@ and open the template in the editor.
       background: #a3c2c2;
   }
   
+  div.tooltip.tooltip-max.bottom {
+      display: none;
+  }
+  
+  div.tooltip.tooltip-max.top {
+      display: none;
+  }
+  
+  div.tooltip.tooltip-min.top {
+      display: none;
+  }
+  
+  div.tooltip.tooltip-min.bottom {
+      display: none;
+  }
+  
   a.linkPanel {
-      display: block;
+      display: inline-block;
+      /*display: block;*/
       text-decoration: none;
       font-size: 150%;
       color: black;

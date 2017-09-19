@@ -7,57 +7,100 @@ and open the template in the editor.
     Created on : Sep 12, 2017, 11:27:35 AM
     Author     : Ricardo
 */
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      /*background-color: black;*/
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      /*width: 100%;  Set width to 100%*/ 
-      margin: auto;
-      /*min-height:200px;*/
-      max-height: 300px !important;
-  }
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  /*background-color: black;*/
+}
 
-  .logo {
-      display: inline-block;
-      margin: 0px;
-      padding: 5px;
-      /*background-color: black;*/
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+.carousel-inner img {
+    margin: auto;
+    max-height: 300px !important;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none; 
   }
-  
-  
-  
-  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 5500px}
-  
-  /* Set gray background color and 100% height */
-  .sidenav {
+}
+
+.logo {
+    display: inline-block;
+    margin: 0px;
+    padding: 5px;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row {
+    height: 4400px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
     padding-top: 20px;
     background-color: #f2f2f2;
     height: 100%;
+}
+
+p a {
+    color: #222;
+}
+
+/* mouse over link */
+p a:hover {
+    color: #48c1c1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* selected link */
+p a:active {
+    color: white;
+}
+
+section {
+      clear: both;
   }
-  
-/*   On small screens, set height to 'auto' for sidenav and grid 
-    @media screen and (max-width: 767px) {
-      .sidenav {
+
+/*   On small screens, set height to 'auto' for sidenav and grid */    
+
+
+@media screen and (max-width: 1550px) {
+    
+    .row {
+        height: 4500px;
+    } 
+}
+
+@media screen and (max-width: 1350px) {
+    
+    .row {
+        height: 4600px;
+    } 
+}
+
+@media screen and (max-width: 1150px) {
+    
+    .row {
+        height: 4830px;
+    } 
+}
+
+@media screen and (max-width: 992px) {
+    .sidenav {
         height: auto;
         padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }*/
+    }
+    .row {
+        height:auto;
+    } 
+}
