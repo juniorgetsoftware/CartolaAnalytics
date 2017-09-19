@@ -31,7 +31,7 @@ if (retrievedObject){
         function(rodadaAtual, status){
 
             //Updated?
-            if (rodadaAtual != data.rodada){
+            if (rodadaAtual == data.rodada){
                 //Loading charts with player view (default)
                 projGraphLoad(data, "$.mediaj");
                 console.log("Cartola Analytics - Carregou dados salvos");
