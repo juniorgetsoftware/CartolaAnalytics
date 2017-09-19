@@ -27,14 +27,11 @@ if (retrievedObject){
     //Setting slider based on saved data
     sliderPesos.slider('setValue',[data.pesoj*100, data.pesoj*100 + data.pesop*100]);
     
-    $.getJSON("mercado.json",
-        function(dataMercado){
+    $.get("projecaoUpdate.php",
+        function(rodadaAtual, status){
 
-            rodadaAtual = Enumerable.From(dataMercado).Max('$.Rodada_ID');
-            rodadaAtual++;
-            
             //Updated?
-            if (rodadaAtual == data.rodada){
+            if (rodadaAtual != data.rodada){
                 //Loading charts with player view (default)
                 projGraphLoad(data, "$.mediaj");
                 console.log("Cartola Analytics - Carregou dados salvos");
@@ -45,7 +42,6 @@ if (retrievedObject){
                 analysisRun(data.horizonte, data.CF=="true" ? true : false, data.pesoj, data.pesop, 1-data.pesoj-data.pesop, "$.mediaj");
                 console.log("Cartola Analytics - Rodou nova análise");
             }
-        
         }
     );
     
