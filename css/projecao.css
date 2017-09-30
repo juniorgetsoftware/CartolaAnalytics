@@ -167,11 +167,14 @@ and open the template in the editor.
   }
   
   a.linkPanel {
-      display: inline-block;
-      /*display: block;*/
+      display: block;
       text-decoration: none;
       font-size: 150%;
       color: black;
+  }
+  
+  .pull-right {
+      margin-top: -29px;
   }
   
   .h3Mercado {
