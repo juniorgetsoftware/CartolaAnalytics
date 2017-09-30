@@ -128,7 +128,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[0],
         y: lbl[0],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#53b7d9"
         },
@@ -144,7 +144,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[1],
         y: lbl[1],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#e06031"
         },
@@ -160,7 +160,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[2],
         y: lbl[2],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#ffb03a"
         }
@@ -170,7 +170,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[3],
         y: lbl[3],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#5e9ea0"
         },
@@ -186,7 +186,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[4],
         y: lbl[4],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#a52b2a"
         }
@@ -196,7 +196,7 @@ function projGraphLoad(jsonData, pInfo, pViewLimit = 12){
         x: pen[5],
         y: lbl[5],
         orientation: 'h',
-        hoverinfo: 'x',
+        hoverinfo: 'none',
         marker: {
             color: "#ce8540"
         },
