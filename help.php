@@ -43,7 +43,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/help.css?v=0.0.4">
+  <link rel="stylesheet" type="text/css" href="css/help.css?v=1.0.1">
   
   <script>
         $(document).ready(function() {
