@@ -32,16 +32,16 @@ if ($phase[0] != "Initial"){
     //Verify status and collect current round
     $currentStatus = $jsonStatus['status_mercado'];
     $currentRound = $jsonStatus['rodada_atual'];
+
+    //Calculates round quantity for the tournament
+    $roundQt = log($jsonMatamata['noteams'],2);
+
+    //Count number of teams for the current round based on tournament JSON
+    $teamsQt = count($teams);
     
-    //Market closed (status = 2)?
+    //Is market closed (status = 2)?
     if($currentStatus == 2){
         
-        //Calculates round quantity for the tournament
-        $roundQt = log($jsonMatamata['noteams'],2);
-        
-        //Count number of teams for the current round based on tournament JSON
-        $teamsQt = count($teams);
-    
         //Verify current round based on API ($parc1) and tournament JSON ($parc2)
         $parc1 = $currentRound - $jsonMatamata['initialround'] + 1;
         $parc2 = $roundQt + 1 - log($teamsQt,2);
@@ -102,6 +102,53 @@ if ($phase[0] != "Initial"){
             array_push($jsonMatamata['results'][0], $response);
             $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
         }
+    }
+    elseif($currentStatus == 1){
+        
+        //Verify current round based on API ($parc1) and tournament JSON ($parc2)
+        $parc1 = $currentRound - $jsonMatamata['initialround'];
+        $parc2 = $roundQt + 1 - log($teamsQt,2);
+
+        //Verify if requested and current data match
+        if ( $parc1 == $parc2 ){ 
+
+            //Initialize array for response
+            $response = array_fill(0,$teamsQt/2,array_fill(0,2,0));
+            
+            //Auxiliary counters to put each team's points at the right position
+            $countMatch = 0;
+            $countTeam = 0;
+            
+            //Get consolidated results
+            foreach ($teams as $teamid) {
+                
+                //Get team's points
+                $url = "https://api.cartolafc.globo.com/time/slug/" . $jsonMatamata['slugs'][$teamid];
+                $strTeam = exec("curl -X GET ".$url);
+                $jsonTeam = json_decode($strTeam, true);            
+                $ptosSum = (float)$jsonTeam['pontos'];
+                
+                //Store result on response array
+                $response[$countMatch][$countTeam] = (float)number_format($ptosSum,2);
+
+                if( $countTeam == 0 ){
+                    $countTeam = 1;
+                } 
+                else {
+                    $countTeam = 0;
+                    $countMatch = $countMatch + 1;
+                }
+                
+            }
+ 
+            //Store new data on file
+            array_push($jsonMatamata['results'][0], $response);
+            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
+            
+            $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "results" => $jsonMatamata['results']);
+            
+            file_put_contents("data/matamataHostilidade03.json", json_encode($closedround), LOCK_EX);
+        }       
     }
 }
 
