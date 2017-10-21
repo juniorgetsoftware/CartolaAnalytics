@@ -14,6 +14,8 @@
 
   <title>Cartola Analytics</title>
   <meta charset="utf-8">
+  <meta name="description" content="Escale seu time com suporte estatístico. Analise o histórico de scout de cada jogador ou ainda configure projeções para cada posição com base no histórico e adversário.">
+  <meta name="keywords" content="Cartola, scouts, análise, analytics, histórico, escalação, projeções"
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   
