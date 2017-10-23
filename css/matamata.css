@@ -1,0 +1,105 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 22, 2017, 10:25:31 AM
+    Author     : Ricardo
+*/
+
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      /*background-color: black;*/
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      /*width: 100%;  Set width to 100%*/ 
+      margin: auto;
+      /*min-height:200px;*/
+      max-height: 300px !important;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  
+  .h3Mercado {
+      display: inline;
+  }
+
+  .separa {
+      clear: both;
+  }
+  
+  .logo {
+      display: inline-block;
+      margin: 0px;
+      padding: 5px;
+      /*background-color: black;*/
+  }
+  
+  #modalloader {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: url(../images/ajaxloader.gif)
+                rgba( 220, 220, 220, .8 )
+                50% 50%
+                no-repeat;
+  }
+
+  #modalloader {
+    overflow: hidden;   
+  }
+  
+  #modalloader {
+    display: none;
+  }
+  
+  div.team.win div.label {
+    color: #333;      
+  }
+  
+  div.team div.label {
+    font-size: 90%;
+    font-weight: unset;
+    color: #999;
+    line-height: unset;
+    text-align: unset;
+  }
+
+  div.team div.score {
+    font-size: 90%;
+    
+  }
+  
+  #selmatamata {
+      height: 34px;
+  }
+  
+/*  .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 50px;
+  }*/
+   

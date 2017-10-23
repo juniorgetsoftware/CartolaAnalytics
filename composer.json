@@ -1,6 +1,7 @@
 {
     "require": {
         "php": "^7.1.0",
-        "athari/yalinqo": "~2.0"
+        "athari/yalinqo": "~2.0",
+        "parse/php-sdk" : "1.3.*"
     }
 }

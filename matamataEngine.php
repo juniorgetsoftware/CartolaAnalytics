@@ -5,6 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+set_time_limit(90);
+
 //Yalinqo
 require_once 'vendor/autoload.php';
 use \YaLinqo\Enumerable;
@@ -12,11 +15,12 @@ use \YaLinqo\Enumerable;
 //Define variables and set to empty values
 $phase = filter_input(INPUT_POST, "phase", FILTER_DEFAULT, FILTER_FORCE_ARRAY);
 $teams = filter_input(INPUT_POST, "teams", FILTER_DEFAULT, FILTER_FORCE_ARRAY);
+$file = filter_input(INPUT_POST, "file", FILTER_DEFAULT, FILTER_FORCE_ARRAY);
 
 //Define 
 
 //Get current tournament bracket
-$strMatamata = file_get_contents("data/matamataHostilidade03.json");
+$strMatamata = file_get_contents("data/".$file[0]);
 $jsonMatamata = json_decode($strMatamata, true);
 
 $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
@@ -147,7 +151,7 @@ if ($phase[0] != "Initial"){
             
             $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "results" => $jsonMatamata['results']);
             
-            file_put_contents("data/matamataHostilidade03.json", json_encode($closedround), LOCK_EX);
+            file_put_contents("data/".$file, json_encode($closedround), LOCK_EX);
         }       
     }
 }

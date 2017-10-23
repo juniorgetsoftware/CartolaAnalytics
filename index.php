@@ -14,8 +14,8 @@
 
   <title>Cartola Analytics</title>
   <meta charset="utf-8">
-  <meta name="description" content="Escale seu time com suporte estatístico. Analise o histórico de scout de cada jogador ou ainda configure projeções para cada posição com base no histórico e adversário.">
-  <meta name="keywords" content="Cartola, scouts, análise, analytics, histórico, escalação, projeções"
+  <meta name="description" content="Escale seu time com base estatística. Analise a evolução e tendências nos scouts de cada jogador. Configure projeções para cada posição com base no adversário e histórico.">
+  <meta name="keywords" content="Cartola, scouts, análise, estatística, analytics, histórico, escalação, projeções"
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/index.css?v=1.0.1">
+  <link rel="stylesheet" type="text/css" href="css/index.css?v=1.0.3">
   
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -57,8 +57,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/indexfunctions.js?v=1.0.1"></script>
-  <script src="js/index.js?v=1.0.1"></script>
+  <script src="js/indexfunctions.js?v=1.0.3"></script>
+  <script src="js/index.js?v=1.0.3"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -280,6 +280,6 @@
 
 </body>
 
-<script src="js/indexfooter.js?v=1.0.1"></script>
+<script src="js/indexfooter.js?v=1.0.3"></script>
 
 </html>
