@@ -151,7 +151,7 @@ if ($phase[0] != "Initial"){
             
             $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "results" => $jsonMatamata['results']);
             
-            file_put_contents("data/".$file, json_encode($closedround), LOCK_EX);
+            //file_put_contents("data/".$file, json_encode($closedround), LOCK_EX);
         }       
     }
 }
