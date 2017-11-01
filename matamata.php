@@ -35,10 +35,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--Bracket CSS-->
-  <link rel="stylesheet" type="text/css" href="css/jquery.bracket.min.css?v=1.0.3">
+  <link rel="stylesheet" type="text/css" href="css/jquery.bracket.min.css?v=1.0.5">
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/matamata.css?v=1.0.3">
+  <link rel="stylesheet" type="text/css" href="css/matamata.css?v=1.0.5">
   
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -53,11 +53,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
 
   <!--Bracket Script-->
-  <script src="js/jquery.bracket.min.js?v=1.0.3"></script>
+  <script src="js/jquery.bracket.min.js?v=1.0.5"></script>
   
   <!--User Scripts-->
-  <script src="js/matamataHostilidadefunctions.js?v=1.0.3"></script>
-  <script src="js/matamataHostilidade.js?v=1.0.3"></script>
+  <script src="js/matamataHostilidadefunctions.js?v=1.0.5"></script>
+  <script src="js/matamataHostilidade.js?v=1.0.5"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -75,7 +75,7 @@
                 <!--<label class="" for="selhorizonte">N. Rodadas:</label>-->
                 <select class="btn btn-default" id="selmatamata">
                     <option value="matamataHostilidade03.json">Mata-mata 03</option>
-                    <option value="matamataHostilidade04.json">Mata-mata 04</option>
+                    <option value="matamataHostilidade04.json" selected="selected">Mata-mata 04</option>
                 </select>
                 <button id="Atualiza" type="button" class="btn btn-default" >Atualizar</button>
             </div>
@@ -84,15 +84,12 @@
         <div class="col-md-12 separa">
             <br>
         </div>
-
           
-        <div class="col-md-12" style="overflow: auto;">
+        <div id="tournament" class="col-md-12" style="overflow: auto;">
             <div class="aux"></div>
             <div class="bracket"></div>
-            
         </div>
         
-         
         <br>
         
     </div>
@@ -107,6 +104,6 @@
 
 </body>
 
-<script src="js/matamatafooter.js?v=1.0.3"></script>
+<script src="js/matamatafooter.js?v=1.0.5"></script>
 
 </html>

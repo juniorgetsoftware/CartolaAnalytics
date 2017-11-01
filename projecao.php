@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" integrity="sha256-qxOBz0Std9dtkon+cnUi5A7HTHO0CLbp9DnkxsJuIXc=" crossorigin="anonymous" />
   
   <!--User CSS-->
-  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=1.0.3">
+  <link rel="stylesheet" type="text/css" href="css/projecao.css?v=1.0.5">
 
   <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -59,8 +59,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js" integrity="sha256-3nkG8q6ajh1K1fHC3hi142DykXlM5TA2xX3OzP/NNJM=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/projecaofunctions.js?v=1.0.3"></script>
-  <script src="js/projecao.js?v=1.0.3"></script>
+  <script src="js/projecaofunctions.js?v=1.0.5"></script>
+  <script src="js/projecao.js?v=1.0.5"></script>
       
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -87,9 +87,9 @@
                                     <li><input type="radio" name="optTipo" id="optJOG" value="$.mediaj" class="form-control" checked/>
                                     <label for="optJOG" class="lblTipo"><strong>Jogador</strong></label></li>
                                     <li><input type="radio" name="optTipo" id="optPOS" value="$.mediap" class="form-control"/>
-                                    <label for="optPOS" class="lblTipo"><strong>Posicao</strong></label></li>
+                                    <label for="optPOS" class="lblTipo"><strong>Clube</strong></label></li>
                                     <li><input type="radio" name="optTipo" id="optCAM" value="$.mediag" class="form-control"/>
-                                    <label for="optCAM" class="lblTipo"><strong>Global</strong></label></li>
+                                    <label for="optCAM" class="lblTipo"><strong>Mista</strong></label></li>
                                 </ul>
                             </div>
                         <!--</form>-->
@@ -126,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="lblQtd">Dist. global:</label> <input id="pesos" type="text"/>
+                                <label class="lblQtd">Dist. mista:</label> <input id="pesos" type="text"/>
                             </div>
                             <div class="form-group">
                                 <button id="Analisa" type="button" class="btn btn-default" >Analisar</button>
@@ -213,6 +213,6 @@
 
 </body>
 
-<script src="js/projecaofooter.js?v=1.0.3"></script>
+<script src="js/projecaofooter.js?v=1.0.5"></script>
 
 </html>

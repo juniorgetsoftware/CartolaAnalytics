@@ -18,15 +18,15 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   
   <!--iPhone icons-->
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180x180.png" />  
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png?v=1.0.5" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180x180.png?v=1.0.5" />  
   
   <!--Bootstrap CSS file-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -92,12 +92,12 @@
                         <hr>
                         <h2>Tipos de projeção</h2>
                         <p>
-                            Após ser calculada, a análise retorna 3 tipos de projeção: <strong>Por jogador, por posição e global </strong>. O usuário 
+                            Após ser calculada, a análise retorna 3 tipos de projeção: <strong>Por jogador, por clube e mista </strong>. O usuário 
                             pode ver cada uma alterando a opção selecionada na seção de filtros de "Visualização". 
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help1.png" alt="ClassMercado">
+                            <img class="img-responsive" src="images/help1.png?v=1.0.5" alt="ClassMercado">
 				<figcaption align="center">Fig. 1 - Seleção do tipo de análise para visualização</figcaption>			
 			</p>                        
                         <br>
@@ -118,7 +118,7 @@
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help2.png" alt="ClassMercado">
+                            <img class="img-responsive" src="images/help2.png?v=1.0.5" alt="ClassMercado">
 				<figcaption align="center">Fig. 2 - Exemplo de visualização de análise por jogador</figcaption>			
 			</p>
                         <br>
@@ -129,20 +129,20 @@
                             (<strong>D</strong>úvida ou <strong>P</strong>rovável) {Nome do jogador} - {Clube} ({número de jogos realizados}) {Confronto}
                         </p>
                         
-                        <h3>Posição</h3>
+                        <h3>Clube</h3>
                         <p>
                             De acordo com os parâmetros setados (ver em <a href="#parametros"><strong>Configuração de parâmetros para o cálculo</strong></a>), a visão por 
-                            posição retorna o valor projetado para cada clube, por posição. Por exemplo, se verificar o gráfico 
+                            clube retorna o valor projetado para cada clube, por posição. Por exemplo, se verificar o gráfico 
                             de meias e constatar um valor projetado de 6 pontos para a Chapecoense, significa que, de acordo com o histórico
-                            e o próximo adversário, os meias da Chapecoense devem fazer 6 pontos cada um se tiverem o mesmo rendimento no próximo confronto.  
+                            e o próximo adversário, os meias da Chapecoense devem fazer 6 pontos cada um, se tiverem o mesmo rendimento do histórico no próximo confronto.  
                             Da mesma forma que na visão por jogador, apresenta o resultado na forma de gráficos de barra horizontal, na ordem decrescente, 
                             como se fosse um ranking, para cada posição. O cálculo leva em conta o histórico de pontos ganhos por cada clube naquela posição e o 
                             histórico de pontos cedidos pelo próximo adversário para a mesma posição.
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help3.png" alt="ClassMercado">
-				<figcaption align="center">Fig. 3 - Exemplo de visualização de análise por posição</figcaption>			
+                            <img class="img-responsive" src="images/help3.png?v=1.0.5" alt="ClassMercado">
+				<figcaption align="center">Fig. 3 - Exemplo de visualização de análise por clube</figcaption>			
 			</p>
                         <br>
                         <p>
@@ -152,26 +152,26 @@
                             {Clube} - {Confronto}
                         </p>
                         
-                        <h3 id="global">Global</h3>
+                        <h3 id="global">Mista</h3>
                         <p>
-                            De acordo com os parâmetros setados (ver em <a href="#parametros"><strong>Configuração de parâmetros para o cálculo</strong></a>), a visão global 
+                            De acordo com os parâmetros setados (ver em <a href="#parametros"><strong>Configuração de parâmetros para o cálculo</strong></a>), a visão mista 
                             retorna o valor projetado para cada jogador com status provável ou dúvida, apresentando na forma de gráficos de barra 
-                            horizontal, na ordem decrescente, como se fosse um ranking, para cada posição. O cálculo da análise global faz uma média dos 
-                            valores projetados da análise por jogador, por posição e também leva em conta a média deste jogador no campeonato inteiro. 
+                            horizontal, na ordem decrescente, como se fosse um ranking, para cada posição. O cálculo da análise mista faz uma média dos 
+                            valores projetados da análise por jogador, por clube e também leva em conta a média deste jogador no campeonato inteiro. 
                             O peso de cada uma destas 3 parcelas no cálculo é definido através de um slider na seção de configurações de <strong>Análise</strong>.
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help4.png" alt="ClassMercado">
-				<figcaption align="center">Fig. 4 - Slider para configuração de distribuição de pesos da análise global</figcaption>			
+                            <img class="img-responsive" src="images/help4.png?v=1.0.5" alt="ClassMercado">
+				<figcaption align="center">Fig. 4 - Slider para configuração de distribuição de pesos da análise mista</figcaption>			
 			</p>
                         <br>
                         <p>
                             O label dos gráficos tem o mesmo formato da opção <strong>Jogador</strong>.
                         </p>
                         <p align="center">
-                            <img class="img-responsive" src="images/help5.png" alt="ClassMercado">
-				<figcaption align="center">Fig. 5 - Exemplo de visualização de análise global</figcaption>			
+                            <img class="img-responsive" src="images/help5.png?v=1.0.5" alt="ClassMercado">
+				<figcaption align="center">Fig. 5 - Exemplo de visualização de análise mista</figcaption>			
 			</p>
                         <a href="#" class="pull-right"> <i class="fa fa-toggle-up fa-2x"></i></a>
                         <br>
@@ -196,7 +196,7 @@
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help6.png" alt="ClassMercado">
+                            <img class="img-responsive" src="images/help6.png?v=1.0.5" alt="ClassMercado">
 				<figcaption align="center">Fig. 6 - Configuração do horizonte de análise</figcaption>			
 			</p>
                         <br>
@@ -206,7 +206,7 @@
                         </p>
                         <br>
                         <p align="center">
-                            <img class="img-responsive" src="images/help7.png" alt="ClassMercado">
+                            <img class="img-responsive" src="images/help7.png?v=1.0.5" alt="ClassMercado">
 				<figcaption align="center">Fig. 7 - Define se analisa mando de campo ou não</figcaption>			
 			</p>
                         <br>
@@ -220,10 +220,10 @@
                             sem considerar o mando de campo, desmarque a opção. 
                         </p>
                         
-                        <h3>Pesos para a análise global</h3>
+                        <h3>Pesos para a análise mista</h3>
                         <p>                            
-                            Por fim, definimos a distribuição de pesos, em porcentagens, para o cálculo da análise global. A definição é feita através 
-                            de um slider na seção de configurações de "Análise", conforme apresentado em <a href="#global"><strong>Tipos de projeção</strong></a>, tipo Global.
+                            Por fim, definimos a distribuição de pesos, em porcentagens, para o cálculo da análise mista. A definição é feita através 
+                            de um slider na seção de configurações de "Análise", conforme apresentado em <a href="#global"><strong>Tipos de projeção</strong></a>, tipo Mista.
                         </p>
                                                 
                         <a href="#" class="pull-right"> <i class="fa fa-toggle-up fa-2x"></i></a>
