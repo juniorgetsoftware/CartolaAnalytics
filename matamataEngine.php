@@ -53,6 +53,35 @@ if ($phase[0] != "Initial"){
         //Verify if requested and current data match
         if ( $parc1 == $parc2 ){
             
+            //Store teams's players
+            if (count($jsonMatamata['players']) == 0){
+                
+                //foreach ($teams as $teamid) {
+                for($i = 0; $i < $jsonMatamata['noteams']; $i++) {    
+                    //Get team's players
+                    $url = "https://api.cartolafc.globo.com/time/slug/" . $jsonMatamata['slugs'][$i];
+                    $strTeam = exec("curl -X GET ".$url);
+                    $jsonTeam = json_decode($strTeam, true);
+                    
+                    //Creating array to put player's ID
+                    $playersID = [];
+
+                    //Get player's ID
+                    for($x = 0; $x < 12; $x++) {
+                        array_push($playersID, $jsonTeam['atletas'][$x]['atleta_id']);
+                    }
+                    
+                    //Add team's players to tournament data
+                    //array_push($jsonMatamata['players'], array($teamid => $playersID));
+                    $jsonMatamata['players'][$i] = $playersID;
+                    
+                }
+                
+                //Save to file
+                file_put_contents("data/".$file[0], json_encode($jsonMatamata), LOCK_EX);
+                
+            }
+            
             //Initialize array for response
             $response = array_fill(0,$teamsQt/2,array_fill(0,2,0));
             
@@ -62,31 +91,45 @@ if ($phase[0] != "Initial"){
             
             //Get current points
             $url = "https://api.cartolafc.globo.com/atletas/pontuados";
+            //$url = "https://api.cartolafc.globo.com/atletas/mercado";
             $strPontuados = exec("curl -X GET ".$url);
             $jsonPontuados = json_decode($strPontuados, true);
             
+            //Filter
+            $PlayersList = [];
             foreach ($teams as $teamid) {
-                
-                //Get team's players
-                $url = "https://api.cartolafc.globo.com/time/slug/" . $jsonMatamata['slugs'][$teamid];
-                $strTeam = exec("curl -X GET ".$url);
-                $jsonTeam = json_decode($strTeam, true);
-                
-                //Creating array to put player's ID
-                $playersID = [];
-                
-                //Get player's ID
-                for($x = 0; $x < 12; $x++) {
-                    array_push($playersID, $jsonTeam['atletas'][$x]['atleta_id']);
+                foreach ($jsonMatamata['players'][$teamid] as $id){
+                    array_push($PlayersList, $id);
                 }
+            }
+            $PlayersList = array_unique($PlayersList);
+            
+            //Search for pontuaction of each player            
+            $pontuacao = [];
+            foreach ($PlayersList as $player) {
+                if(array_key_exists($player, $jsonPontuados['atletas'])){
+                    //array_push($pontuacao, array($player => $jsonPontuados['atletas'][$player]['pontuacao']) );
+                    //array_push($pontuacao, array($player => (float)$jsonPontuados['atletas'][50]['pontos_num']) );
+                    //$pontuacao[$player] = (float)$jsonPontuados['atletas'][50]['pontos_num'];
+                    $pontuacao[$player] = (float)$jsonPontuados['atletas']['$player']['pontuacao'];
+                }
+                else{
+                    $pontuacao[$player] = (float)0;
+                }
+            }
+            
+            foreach ($teams as $teamid) {
                 
                 //Initialize points (=0) 
                 $ptosSum = 0;
                 
-                foreach ($playersID as $id){
-                    //Search for points for each player and add to total
-                    if(array_key_exists($id, $jsonPontuados['atletas'])){
-                        $ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][$id]['pontuacao'];
+                //Search for points for each player and add to total
+                foreach ($jsonMatamata['players'][$teamid] as $id){
+                    
+                    if(array_key_exists($id, $pontuacao)){
+                        //$ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][$id]['pontuacao'];
+                        //$ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][100]['pontos_num'];
+                        $ptosSum = $ptosSum + (float)$pontuacao[$id];
                     }
                 }
                 
@@ -149,7 +192,7 @@ if ($phase[0] != "Initial"){
             array_push($jsonMatamata['results'][0], $response);
             $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
             
-            $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "results" => $jsonMatamata['results']);
+            $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "players" => array(), "results" => $jsonMatamata['results']);
             
             file_put_contents("data/".$file[0], json_encode($closedround), LOCK_EX);
         }       
