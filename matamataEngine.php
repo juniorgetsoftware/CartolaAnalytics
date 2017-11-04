@@ -111,7 +111,7 @@ if ($phase[0] != "Initial"){
                     //array_push($pontuacao, array($player => $jsonPontuados['atletas'][$player]['pontuacao']) );
                     //array_push($pontuacao, array($player => (float)$jsonPontuados['atletas'][50]['pontos_num']) );
                     //$pontuacao[$player] = (float)$jsonPontuados['atletas'][50]['pontos_num'];
-                    $pontuacao[$player] = (float)$jsonPontuados['atletas']['$player']['pontuacao'];
+                    $pontuacao[$player] = (float)$jsonPontuados['atletas'][$player]['pontuacao'];
                 }
                 else{
                     $pontuacao[$player] = (float)0;
