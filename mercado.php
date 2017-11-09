@@ -39,7 +39,7 @@ echo "status: ".$currentStatus;
 echo "<br>rodada: ".$currentRound;
 
 //Opened market? (status = 1)
-if($currentStatus == 2){
+if($currentStatus == 1){
 
     //Parse initialization
     ParseClient::initialize( $app_id, $rest_key, null );
@@ -81,6 +81,9 @@ if($currentStatus == 2){
     
     //echo "<br>".$strMatchups;
     
+    $queryforteam = new ParseQuery('Clubes');
+    $tbClubes = $queryforteam->find();
+    
     //Prepare data and add to b4a
     foreach ($jsonMercadoAPI['atletas'] as $atleta) {
 
@@ -97,20 +100,24 @@ if($currentStatus == 2){
         }
 
         //Verify team's name and nickname
-        $queryforteam = new ParseQuery('Clubes');
-        $queryforteam->equalTo('Clube_ID', $atleta['clube_id']);
-        $teamAbrev = $queryforteam->first()->get('Abrev');
-        $teamNome = $queryforteam->first()->get('Nome');
+        foreach ($tbClubes as $clube){
+            if($atleta['clube_id'] == $clube->get('Clube_ID')){
+                $teamNome = $clube->get('Nome');
+                $teamAbrev = $clube->get('Abrev');
+            }
+        }
         
         //Verify opponent's name and nickname
-        $queryforopp = new ParseQuery('Clubes');
-        $queryforopp->equalTo('Clube_ID', $AdvId);
-        $oppAbrev = $queryforopp->first()->get('Abrev');
-        $oppNome = $queryforopp->first()->get('Nome');
+        foreach ($tbClubes as $clube){
+            if($AdvId == $clube->get('Clube_ID')){
+                $oppNome = $clube->get('Nome');
+                $oppAbrev = $clube->get('Abrev');
+            }
+        }
     
         //Save data to b4a
         $object = new ParseObject("Mercado");
-        $object->set('Rodada_ID', 30);
+        $object->set('Rodada_ID', $currentRound);
         $object->set('Atleta_ID', $atleta['atleta_id']);
         $object->set('Apelido', $atleta['apelido']);
         $object->set('Pos', 'ATA');
@@ -125,7 +132,7 @@ if($currentStatus == 2){
         $object->set('DD', 2);
         $object->save();
 
-        echo "<br>Atleta: ".$atleta['apelido'];//."       Time: ".$teamNome;
+        echo "<br>Atleta: ".$atleta['apelido']."      Time: ".$teamNome."       Adv.: ".$oppNome;
 
     }
     echo "<br>FIM";

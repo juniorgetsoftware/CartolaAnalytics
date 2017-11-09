@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-set_time_limit(90);
+set_time_limit(150);
 
 //Yalinqo
 require_once 'vendor/autoload.php';
