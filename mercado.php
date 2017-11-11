@@ -40,7 +40,7 @@ echo "status (1-aberto; 2-fechado; 4-manutenção): ".$currentStatus;
 echo "<br>rodada atual: ".$currentRound;
 
 //Opened market? (status = 1)
-if($currentStatus == 2){
+if($currentStatus == 1){
 
     //Parse initialization
     ParseClient::initialize( $app_id, $rest_key, null );
@@ -54,8 +54,8 @@ if($currentStatus == 2){
     $query->descending('Rodada_ID');
     $currentRoundSaved = $query->first();
 
-    //Info
     if(count($currentRoundSaved)>0){
+        //Info
         echo "<br>rodada mais recente b4a: ".$currentRoundSaved->get('Rodada_ID');
 
         //Before update, delete current round from b4a
@@ -65,12 +65,17 @@ if($currentStatus == 2){
             $querytodelete->limit(1000);
             $querytodelete->equalTo('Rodada_ID', $currentRoundSaved->get('Rodada_ID'));
             $itemstodel = $querytodelete->find();
-
-            echo "<br>numero de records pra deletar: ".count($itemstodel);
+            
+            echo "<br>Rodada existente";
+            echo "<br>Numero de records pra deletar: ".count($itemstodel);
             if(count($itemstodel) > 0){
                 ParseObject::destroyAll($itemstodel);
             }
 
+        }
+        else
+        {
+            echo "<br>Nova Rodada";
         }
     }
     else{
@@ -106,6 +111,9 @@ if($currentStatus == 2){
     
     //Create variable to count inserted records
     $insertedRecords = 0;
+    
+    //Create array to upload data (batch saving)
+    $list = [];
     
     //Prepare data and add to b4a
     foreach ($jsonMercadoAPI['atletas'] as $atleta) {
@@ -180,6 +188,10 @@ if($currentStatus == 2){
             }
         }
         
+        $FT = array_key_exists('FT', $atleta['scout']) ? $atleta['scout']['FT'] : 0;
+        $FD = array_key_exists('FD', $atleta['scout']) ? $atleta['scout']['FD'] : 0;
+        $FF = array_key_exists('FF', $atleta['scout']) ? $atleta['scout']['FF'] : 0;
+        
         //Save data to b4a
         $object = new ParseObject("Mercado");
         $object->set('Rodada_ID', $currentRound-1);
@@ -202,32 +214,36 @@ if($currentStatus == 2){
         $object->set('Media', $atleta['media_num']);        
         $object->set('NoJogos', $atleta['jogos_num']);
         $object->set('Indicador', $atleta['media_num'] - $atleta['preco_num']);
-//        $object->set('G', array_key_exists('G', $atleta['scout']) ? $atleta['scout']['G'] : 0);
-//        $object->set('A', array_key_exists('A', $atleta['scout']) ? $atleta['scout']['A'] : 0);
-//        $object->set('FT', array_key_exists('FT', $atleta['scout']) ? $atleta['scout']['FT'] : 0);
-//        $object->set('FD', array_key_exists('FD', $atleta['scout']) ? $atleta['scout']['FD'] : 0);
-//        $object->set('FF', array_key_exists('FF', $atleta['scout']) ? $atleta['scout']['FF'] : 0);
-//        $object->set('F', $object->get(FT)+$object->get(FD)+$object->get(FF));
-//        $object->set('FS', array_key_exists('FS', $atleta['scout']) ? $atleta['scout']['FS'] : 0);
-//        $object->set('RB', array_key_exists('RB', $atleta['scout']) ? $atleta['scout']['RB'] : 0);
-//        $object->set('SG', array_key_exists('SG', $atleta['scout']) ? $atleta['scout']['SG'] : 0);
-//        $object->set('DD', array_key_exists('DD', $atleta['scout']) ? $atleta['scout']['DD'] : 0);
-//        $object->set('DP', array_key_exists('DP', $atleta['scout']) ? $atleta['scout']['DP'] : 0);
-//        $object->set('PE', array_key_exists('PE', $atleta['scout']) ? $atleta['scout']['PE'] : 0);
-//        $object->set('I', array_key_exists('I', $atleta['scout']) ? $atleta['scout']['I'] : 0);
-//        $object->set('PP', array_key_exists('PP', $atleta['scout']) ? $atleta['scout']['PP'] : 0);
-//        $object->set('CV', array_key_exists('CV', $atleta['scout']) ? $atleta['scout']['CV'] : 0);
-//        $object->set('CA', array_key_exists('CA', $atleta['scout']) ? $atleta['scout']['CA'] : 0);
-//        $object->set('FC', array_key_exists('FC', $atleta['scout']) ? $atleta['scout']['FC'] : 0);
-//        $object->set('GS', array_key_exists('GS', $atleta['scout']) ? $atleta['scout']['GS'] : 0);
+        $object->set('G', array_key_exists('G', $atleta['scout']) ? $atleta['scout']['G'] : 0);
+        $object->set('A', array_key_exists('A', $atleta['scout']) ? $atleta['scout']['A'] : 0);
+        $object->set('FT', $FT);
+        $object->set('FD', $FD);
+        $object->set('FF', $FF);
+        $object->set('F', $FT + $FD + $FF);
+        $object->set('FS', array_key_exists('FS', $atleta['scout']) ? $atleta['scout']['FS'] : 0);
+        $object->set('RB', array_key_exists('RB', $atleta['scout']) ? $atleta['scout']['RB'] : 0);
+        $object->set('SG', array_key_exists('SG', $atleta['scout']) ? $atleta['scout']['SG'] : 0);
+        $object->set('DD', array_key_exists('DD', $atleta['scout']) ? $atleta['scout']['DD'] : 0);
+        $object->set('DP', array_key_exists('DP', $atleta['scout']) ? $atleta['scout']['DP'] : 0);
+        $object->set('PE', array_key_exists('PE', $atleta['scout']) ? $atleta['scout']['PE'] : 0);
+        $object->set('I', array_key_exists('I', $atleta['scout']) ? $atleta['scout']['I'] : 0);
+        $object->set('PP', array_key_exists('PP', $atleta['scout']) ? $atleta['scout']['PP'] : 0);
+        $object->set('CV', array_key_exists('CV', $atleta['scout']) ? $atleta['scout']['CV'] : 0);
+        $object->set('CA', array_key_exists('CA', $atleta['scout']) ? $atleta['scout']['CA'] : 0);
+        $object->set('FC', array_key_exists('FC', $atleta['scout']) ? $atleta['scout']['FC'] : 0);
+        $object->set('GS', array_key_exists('GS', $atleta['scout']) ? $atleta['scout']['GS'] : 0);
         
-        $object->save();
+        //$object->save();
+        array_push($list, $object);
 
         $insertedRecords++;
         
         echo "<br>Atleta: ".$atleta['apelido']."      Time: ".$teamAbrev."       Adv.: ".$oppAbrev."     Indicador: ".$object->get('Indicador');
 
     }
+    
+    ParseObject::saveAll($list);
+    
     echo "<br>Número de registros inseridos: ".$insertedRecords;
     echo "<br>FIM";
 }
