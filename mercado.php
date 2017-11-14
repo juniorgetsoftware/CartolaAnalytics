@@ -24,7 +24,6 @@ use Parse\ParseClient;
 //IDs for Parse
 $app_id = "vzFysiKeae7XA4yy4QXsGg9ZlfUW7rFzSnlAgJdi";
 $rest_key = "WfmXfsByDb1CjRoD9FvHt5W3YtmEhAsIuyrdcXUq";
-//$master_key = "1FbUi0hLRKNLoJWI0gAgpfZNV9FU53pxUPtcN1pH";
 
 //Get current status from CartolaFC API
 $url = "https://api.cartolafc.globo.com/mercado/status";
@@ -197,17 +196,17 @@ if($currentStatus == 1){
         $object->set('Rodada_ID', $currentRound-1);
         $object->set('Atleta_ID', $atleta['atleta_id']);
         $object->set('Apelido', $atleta['apelido']);
-        $object->set('Pos', $playerPosition);
+        $object->set('Pos', sprintf('%-5s',$playerPosition));
         $object->set('Time', $teamNome);
-        $object->set('TimeAbrev', $teamAbrev);
+        $object->set('TimeAbrev', sprintf('%-5s',$teamAbrev));
         $object->set('Status', $playerStatus);
-        $object->set('ADV', $oppAbrev);
+        $object->set('ADV', sprintf('%-5s',$oppAbrev));
         $object->set('CF', $CF);
-        $object->set('CASA', $CASA);
-        $object->set('FORA', $FORA);
+        $object->set('CASA', sprintf('%-5s',$CASA));
+        $object->set('FORA', sprintf('%-5s',$FORA));
         $object->set('CFD', $CFD);
-        $object->set('CASA_D', $CASAD);
-        $object->set('FORA_D', $FORAD);
+        $object->set('CASA_D', sprintf('%-5s',$CASAD));
+        $object->set('FORA_D', sprintf('%-5s',$FORAD));
         $object->set('Pts_Ult', $atleta['pontos_num']);
         $object->set('Preco', $atleta['preco_num']);
         $object->set('VarPreco', $atleta['variacao_num']);

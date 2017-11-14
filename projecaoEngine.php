@@ -59,47 +59,49 @@ $currentStatus = $jsonStatus['status_mercado'];
 $currentRound = $jsonStatus['rodada_atual'] - 1;
 
 //Filtering probable players
-for($x = 0; $x < count($jsonMercado); $x++) {
-    if ((($jsonMercado[$x]['Status'] == "Provável  ") || ($jsonMercado[$x]['Status'] == "Dúvida    "))
-            && ($jsonMercado[$x]['Rodada_ID'] == $currentRound)
-            //&& ($jsonMercado[$x]['TimeAbrev'] == "BAH  ")
-            ){
-        $provaveis[] = $jsonMercado[$x];
-    }
-}
+//for($x = 0; $x < count($jsonMercado); $x++) {
+//    if ((($jsonMercado[$x]['Status'] == "Provável  ") || ($jsonMercado[$x]['Status'] == "Dúvida    "))
+//            && ($jsonMercado[$x]['Rodada_ID'] == $currentRound)
+//            //&& ($jsonMercado[$x]['TimeAbrev'] == "BAH  ")
+//            ){
+//        $provaveis[] = $jsonMercado[$x];
+//    }
+//}
 
 //Filtering probable players
-//$queryProvavel = new ParseQuery('Mercado');
-//$queryProvavel->equalTo('Status', "Provável  ");
-//$queryDuvida = new ParseQuery('Mercado');
-//$queryDuvida->equalTo('Status', "Dúvida    ");
-//$mainquery = ParseQuery::orQueries([$queryProvavel,$queryDuvida]);
-//$mainquery->limit(1000);
-//$mainquery->equalTo('Rodada_ID', $currentRound);
-//$queryResultProvaveis = $mainquery->find();
-//foreach ($queryResultProvaveis as $auxiliarProvaveis){
-//    array_push($provaveis, $auxiliarProvaveis->getAllKeys());
-//}
-
-//Filtering Market based on analysis horizon
-for($x = 0; $x < count($jsonMercado); $x++) {
-    if (($jsonMercado[$x]['Rodada_ID'] > $currentRound-$horizon[0])
-            && !($jsonMercado[$x]['VarPreco'] ==0 && $jsonMercado[$x]['Pts_Ult'] == 0)
-            ){
-        $jsonMercadoFiltered[] = $jsonMercado[$x];
-    }
+$queryProvavel = new ParseQuery('Mercado');
+$queryProvavel->equalTo('Status', "Provável  ");
+$queryDuvida = new ParseQuery('Mercado');
+$queryDuvida->equalTo('Status', "Dúvida    ");
+$mainquery = ParseQuery::orQueries([$queryProvavel,$queryDuvida]);
+$mainquery->limit(1000);
+$mainquery->equalTo('Rodada_ID', $currentRound);
+$queryResultProvaveis = $mainquery->find();
+foreach ($queryResultProvaveis as $auxiliarProvaveis){
+    array_push($provaveis, $auxiliarProvaveis->getAllKeys());
 }
 
 //Filtering Market based on analysis horizon
-//$queryHorizon = new ParseQuery('Mercado');
-//$queryHorizon->limit(6000);
-//$queryHorizon->greaterThan('Rodada_ID', $currentRound-$horizon[0]);
-//$queryHorizon->notEqualTo('VarPreco', 0);
-////$queryHorizon->notEqualTo('Pts_Ult', 0);
-//$queryResultHorizon = $queryHorizon->find();
-//foreach ($queryResultHorizon as $auxiliarHorizon){
-//    array_push($jsonMercadoFiltered, $auxiliarHorizon->getAllKeys());
+//for($x = 0; $x < count($jsonMercado); $x++) {
+//    if (($jsonMercado[$x]['Rodada_ID'] > $currentRound-$horizon[0])
+//            && !($jsonMercado[$x]['VarPreco'] ==0 && $jsonMercado[$x]['Pts_Ult'] == 0)
+//            ){
+//        $jsonMercadoFiltered[] = $jsonMercado[$x];
+//    }
 //}
+
+//Filtering Market based on analysis horizon
+$queryVarPreco = new ParseQuery('Mercado');
+$queryVarPreco->notEqualTo('VarPreco', 0);
+$queryPtsUlt = new ParseQuery('Mercado');
+$queryPtsUlt->notEqualTo('Pts_Ult', 0);
+$queryHorizon = ParseQuery::orQueries([$queryVarPreco,$queryPtsUlt]);
+$queryHorizon->limit(6000);
+$queryHorizon->greaterThan('Rodada_ID', $currentRound-$horizon[0]);
+$queryResultHorizon = $queryHorizon->find();
+foreach ($queryResultHorizon as $auxiliarHorizon){
+    array_push($jsonMercadoFiltered, $auxiliarHorizon->getAllKeys());
+}
 
 //Creating variable to store data
 $data = [];
