@@ -5,9 +5,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//Yalinqo
+ini_set('memory_limit', '192M');
+
+//Yalinqo and Parse
 require_once 'vendor/autoload.php';
 use \YaLinqo\Enumerable;
+
+use Parse\ParseObject;
+use Parse\ParseQuery;
+use Parse\ParseACL;
+use Parse\ParsePush;
+use Parse\ParseUser;
+use Parse\ParseInstallation;
+use Parse\ParseException;
+use Parse\ParseAnalytics;
+use Parse\ParseFile;
+use Parse\ParseCloud;
+use Parse\ParseClient;
+
+//IDs for Parse
+$app_id = "vzFysiKeae7XA4yy4QXsGg9ZlfUW7rFzSnlAgJdi";
+$rest_key = "WfmXfsByDb1CjRoD9FvHt5W3YtmEhAsIuyrdcXUq";
+
+//Parse initialization
+ParseClient::initialize( $app_id, $rest_key, null );
+ParseClient::setServerURL('https://parseapi.back4app.com','/');
 
 // define variables and set to empty values
 $horizon = filter_input(INPUT_POST, "horizon", FILTER_DEFAULT, FILTER_FORCE_ARRAY);
@@ -28,8 +50,9 @@ $jsonMercado = json_decode($strMercado, true);
 //Creating an array to put filtered result
 //$result = array();
 
-//Creating an array to put probable players
+//Creating arrays to put probable and filtered players
 $provaveis = array();
+$jsonMercadoFiltered = array();
 
 //Verify status and collect current round
 $currentStatus = $jsonStatus['status_mercado'];
@@ -45,6 +68,19 @@ for($x = 0; $x < count($jsonMercado); $x++) {
     }
 }
 
+//Filtering probable players
+//$queryProvavel = new ParseQuery('Mercado');
+//$queryProvavel->equalTo('Status', "Provável  ");
+//$queryDuvida = new ParseQuery('Mercado');
+//$queryDuvida->equalTo('Status', "Dúvida    ");
+//$mainquery = ParseQuery::orQueries([$queryProvavel,$queryDuvida]);
+//$mainquery->limit(1000);
+//$mainquery->equalTo('Rodada_ID', $currentRound);
+//$queryResultProvaveis = $mainquery->find();
+//foreach ($queryResultProvaveis as $auxiliarProvaveis){
+//    array_push($provaveis, $auxiliarProvaveis->getAllKeys());
+//}
+
 //Filtering Market based on analysis horizon
 for($x = 0; $x < count($jsonMercado); $x++) {
     if (($jsonMercado[$x]['Rodada_ID'] > $currentRound-$horizon[0])
@@ -53,6 +89,17 @@ for($x = 0; $x < count($jsonMercado); $x++) {
         $jsonMercadoFiltered[] = $jsonMercado[$x];
     }
 }
+
+//Filtering Market based on analysis horizon
+//$queryHorizon = new ParseQuery('Mercado');
+//$queryHorizon->limit(6000);
+//$queryHorizon->greaterThan('Rodada_ID', $currentRound-$horizon[0]);
+//$queryHorizon->notEqualTo('VarPreco', 0);
+////$queryHorizon->notEqualTo('Pts_Ult', 0);
+//$queryResultHorizon = $queryHorizon->find();
+//foreach ($queryResultHorizon as $auxiliarHorizon){
+//    array_push($jsonMercadoFiltered, $auxiliarHorizon->getAllKeys());
+//}
 
 //Creating variable to store data
 $data = [];
@@ -122,6 +169,10 @@ foreach ($provaveis as $provavel) {
             }            
         }
 
+    }
+    
+    if ($provavel['Atleta_ID'] == 82455){
+            $elsn = 0;
     }
     
     //Calculates the average of earned points for the current player
