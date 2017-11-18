@@ -181,10 +181,13 @@ function gridMercadoLoad(pTeamFilter, pPosFilter, pStatusFilter){
             posFilter: pPosFilter,
             statusFilter: pStatusFilter
         },
-        function(data, status){
+        function(dataMercado, status){
+            jsonDataMercado = JSON.parse(dataMercado);
+            var d = new Date(jsonDataMercado[0]+" UTC");
+            console.log(d.toLocaleString());
             table = $('#mercado').DataTable();
             table.clear();
-            table.rows.add(JSON.parse(data)).draw();
+            table.rows.add(jsonDataMercado[1]).draw();
         }
     );
 }
@@ -201,73 +204,75 @@ function gridJogadorLoad(pPlayerFilter){
             table = $('#jogador').DataTable();
             table.clear();
             var jsonData = JSON.parse(data);
-            table.rows.add(jsonData).draw();
+            table.rows.add(jsonData[1]).draw();
+            console.log(jsonData);
             
             //Preparing data for graph
             //Get the player's name
-            var playerNickname = jsonData[0].Apelido;
+            var playerNickname = jsonData[1][0].Apelido;
+            console.log(playerNickname);
             
             //Get data and define the labels
-            var auxlblRounds = Enumerable.From(jsonData)
+            var auxlblRounds = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("x => x.Rodada_ID + '-' + x.CASA_D.trim() + ' x ' + x.FORA_D.trim()").ToArray();
             
             //Load auxiliary variables (Points and Scout)
-            var auxpenPts = Enumerable.From(jsonData)
+            var auxpenPts = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.Pts_Ult").ToArray();
-            var auxpenG = Enumerable.From(jsonData)
+            var auxpenG = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.G").ToArray();
-            var auxpenA = Enumerable.From(jsonData)
+            var auxpenA = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.A").ToArray();
-            var auxpenF = Enumerable.From(jsonData)
+            var auxpenF = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.F").ToArray();
-            var auxpenFT = Enumerable.From(jsonData)
+            var auxpenFT = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.FT").ToArray();
-            var auxpenFD = Enumerable.From(jsonData)
+            var auxpenFD = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.FD").ToArray();
-            var auxpenFF = Enumerable.From(jsonData)
+            var auxpenFF = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.FF").ToArray();
-            var auxpenFS = Enumerable.From(jsonData)
+            var auxpenFS = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.FS").ToArray();
-            var auxpenRB = Enumerable.From(jsonData)
+            var auxpenRB = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.RB").ToArray();
-            var auxpenSG = Enumerable.From(jsonData)
+            var auxpenSG = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.SG").ToArray();
-            var auxpenDD = Enumerable.From(jsonData)
+            var auxpenDD = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.DD").ToArray();
-            var auxpenDP = Enumerable.From(jsonData)
+            var auxpenDP = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.DP").ToArray();
-            var auxpenPE = Enumerable.From(jsonData)
+            var auxpenPE = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.PE").ToArray();
-            var auxpenI = Enumerable.From(jsonData)
+            var auxpenI = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.I").ToArray();
-            var auxpenPP = Enumerable.From(jsonData)
+            var auxpenPP = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.PP").ToArray();
-            var auxpenCV = Enumerable.From(jsonData)
+            var auxpenCV = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.CV").ToArray();
-            var auxpenCA = Enumerable.From(jsonData)
+            var auxpenCA = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.CA").ToArray();
-            var auxpenFC = Enumerable.From(jsonData)
+            var auxpenFC = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.FC").ToArray();
-            var auxpenGS = Enumerable.From(jsonData)
+            var auxpenGS = Enumerable.From(jsonData[1])
                     .OrderBy("$.Rodada_ID")
                     .Select("$.GS").ToArray();
             

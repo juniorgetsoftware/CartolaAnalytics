@@ -46,7 +46,10 @@ $jsonStatus = json_decode($strStatus, true);
 //$jsonMercado = json_decode($strMercado, true);
 
 //Creating an array to put filtered result
-$result = array();
+$result = array(2);
+$result[0] = null;
+$result[1] = [];
+//$result = array();
 
 //Verify status and collect current round
 $currentStatus = $jsonStatus['status_mercado'];
@@ -68,8 +71,16 @@ if($flagPlayer){
         $query->containedIn('Pos', $posFilter);
     }
     $queryresult = $query->find();
+
+    //Get data date
+//    $auxDate = ["createdAt" => $queryresult[0]->getCreatedAt()];
+//    array_push($result[0], $auxDate["createdAt"]->date);  
+    $auxDate = $queryresult[0]->getCreatedAt();
+    $result[0] = $auxDate->format('Y-m-d H:i:s');;
+    
     foreach ($queryresult as $auxiliar){
-        array_push($result, $auxiliar->getAllKeys());
+        array_push($result[1], $auxiliar->getAllKeys());
+//        array_push($result, $auxiliar->getAllKeys());
     }
     
 }
@@ -83,7 +94,7 @@ else{
     $query->equalTo('Atleta_ID', intval($playerFilter[0]));
     $queryresult = $query->find();
     foreach ($queryresult as $auxiliar){
-        array_push($result, $auxiliar->getAllKeys());
+        array_push($result[1], $auxiliar->getAllKeys());
     }
 }
 

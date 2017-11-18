@@ -57,8 +57,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
   
   <!--User Scripts-->
-  <script src="js/indexfunctions.js?v=1.0.5"></script>
-  <script src="js/index.js?v=1.0.5"></script>
+  <script src="js/indexfunctions.js?v=1.0.6"></script>
+  <script src="js/index.js?v=1.0.6"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -71,7 +71,7 @@
       
         <div class="col-md-12">
             <br>
-            <h3 class="h3Mercado">Mercado</h3>
+            <h3 id="TituloMercado" class="h3Mercado">Mercado</h3>
             <div class="btn-group pull-right">
                 <button id="Filtra" type="button" class="btn btn-default" >Filtrar</button>
                 <button id="Limpa" type="button" class="btn btn-default" >Limpa Filtros</button>
@@ -280,6 +280,6 @@
 
 </body>
 
-<script src="js/indexfooter.js?v=1.0.5"></script>
+<script src="js/indexfooter.js?v=1.0.6"></script>
 
 </html>
