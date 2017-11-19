@@ -58,19 +58,23 @@ if ($phase[0] != "Initial"){
                 
                 //foreach ($teams as $teamid) {
                 for($i = 0; $i < $jsonMatamata['noteams']; $i++) {    
-                    //Get team's players
-                    $url = "https://api.cartolafc.globo.com/time/slug/" . $jsonMatamata['slugs'][$i];
-                    $strTeam = exec("curl -X GET ".$url);
-                    $jsonTeam = json_decode($strTeam, true);
                     
                     //Creating array to put player's ID
                     $playersID = [];
 
                     //Get player's ID
-                    for($x = 0; $x < 12; $x++) {
-                        array_push($playersID, $jsonTeam['atletas'][$x]['atleta_id']);
-                    }
+                    if (in_array($i, $teams)){
+                        
+                        //Get team's players
+                        $url = "https://api.cartolafc.globo.com/time/slug/" . $jsonMatamata['slugs'][$i];
+                        $strTeam = exec("curl -X GET ".$url);
+                        $jsonTeam = json_decode($strTeam, true);
                     
+                        for($x = 0; $x < 12; $x++) {
+                            array_push($playersID, $jsonTeam['atletas'][$x]['atleta_id']);
+                        }
+                    }
+                        
                     //Add team's players to tournament data
                     //array_push($jsonMatamata['players'], array($teamid => $playersID));
                     $jsonMatamata['players'][$i] = $playersID;
