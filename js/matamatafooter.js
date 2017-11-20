@@ -117,6 +117,8 @@ $('#Atualiza').click(function() {
                 },
                 function(data, status){
                     console.log(data);
+                    var jsondata = JSON.parse(data);
+                
                     $('.aux').hide();
                     $('.bracket').bracket({
                         skipConsolationRound: true,
@@ -124,8 +126,13 @@ $('#Atualiza').click(function() {
                         scoreWidth: 55,
                         matchMargin: 20,
                         roundMargin: 75,
-                        init: JSON.parse(data) /* data to initialize the bracket with */ 
+                        init: jsondata /* data to initialize the bracket with */ 
                     });
+
+                    var onfield = jsondata['onfield'];
+                    for (x in onfield){
+                        $('[class^="team "][data-teamid='+x.toString()+']:last').children('.label').prepend('('+onfield[x]+') ');
+                    }
                 }
             );
         }

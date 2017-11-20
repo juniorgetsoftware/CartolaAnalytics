@@ -56,8 +56,8 @@
   <script src="js/jquery.bracket.min.js?v=1.0.6"></script>
   
   <!--User Scripts-->
-  <script src="js/matamataHostilidadefunctions.js?v=1.0.6"></script>
-  <script src="js/matamataHostilidade.js?v=1.0.6"></script>
+  <script src="js/matamataHostilidadefunctions.js?v=1.0.7"></script>
+  <script src="js/matamataHostilidade.js?v=1.0.7"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -104,6 +104,6 @@
 
 </body>
 
-<script src="js/matamatafooter.js?v=1.0.6"></script>
+<script src="js/matamatafooter.js?v=1.0.7"></script>
 
 </html>
