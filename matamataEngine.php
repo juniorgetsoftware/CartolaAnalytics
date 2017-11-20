@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-set_time_limit(150);
+set_time_limit(192);
 
 //Yalinqo
 require_once 'vendor/autoload.php';
@@ -76,7 +76,6 @@ if ($phase[0] != "Initial"){
                     }
                         
                     //Add team's players to tournament data
-                    //array_push($jsonMatamata['players'], array($teamid => $playersID));
                     $jsonMatamata['players'][$i] = $playersID;
                     
                 }
@@ -88,6 +87,7 @@ if ($phase[0] != "Initial"){
             
             //Initialize array for response
             $response = array_fill(0,$teamsQt/2,array_fill(0,2,0));
+            $playersCounter = [];
             
             //Auxiliary counters to put each team's points at the right position
             $countMatch = 0;
@@ -95,50 +95,33 @@ if ($phase[0] != "Initial"){
             
             //Get current points
             $url = "https://api.cartolafc.globo.com/atletas/pontuados";
-            //$url = "https://api.cartolafc.globo.com/atletas/mercado";
             $strPontuados = exec("curl -X GET ".$url);
             $jsonPontuados = json_decode($strPontuados, true);
-            
-            //Filter
-            $PlayersList = [];
-            foreach ($teams as $teamid) {
-                foreach ($jsonMatamata['players'][$teamid] as $id){
-                    array_push($PlayersList, $id);
-                }
-            }
-            $PlayersList = array_unique($PlayersList);
-            
-            //Search for pontuaction of each player            
-            $pontuacao = [];
-            foreach ($PlayersList as $player) {
-                if(array_key_exists($player, $jsonPontuados['atletas'])){
-                    //array_push($pontuacao, array($player => $jsonPontuados['atletas'][$player]['pontuacao']) );
-                    //array_push($pontuacao, array($player => (float)$jsonPontuados['atletas'][50]['pontos_num']) );
-                    //$pontuacao[$player] = (float)$jsonPontuados['atletas'][50]['pontos_num'];
-                    $pontuacao[$player] = (float)$jsonPontuados['atletas'][$player]['pontuacao'];
-                }
-                else{
-                    $pontuacao[$player] = (float)0;
-                }
-            }
             
             foreach ($teams as $teamid) {
                 
                 //Initialize points (=0) 
                 $ptosSum = 0;
+                $onfield = 0;
                 
                 //Search for points for each player and add to total
                 foreach ($jsonMatamata['players'][$teamid] as $id){
                     
-                    if(array_key_exists($id, $pontuacao)){
-                        //$ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][$id]['pontuacao'];
-                        //$ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][100]['pontos_num'];
-                        $ptosSum = $ptosSum + (float)$pontuacao[$id];
+                    if(array_key_exists($id, $jsonPontuados['atletas'])){
+                        
+                        $ptosSum = $ptosSum + (float)$jsonPontuados['atletas'][$id]['pontuacao'];
+                        
+                        if ($jsonPontuados['atletas'][$id]['posicao_id'] <> 6)
+                            $onfield = $onfield + 1;
+                        elseif ($jsonPontuados['atletas'][$id]['posicao_id'] == 6 && $jsonPontuados['atletas'][$id]['pontuacao'] <> 0){
+                            $onfield = $onfield + 1;
+                        }
                     }
                 }
                 
                 //Store result on response array
                 $response[$countMatch][$countTeam] = (float)number_format($ptosSum,2);
+                $playersCounter[$teamid] = (string)$onfield."/12";
                 
                 if( $countTeam == 0 ){
                     $countTeam = 1;
@@ -151,7 +134,7 @@ if ($phase[0] != "Initial"){
             
             //Add new results
             array_push($jsonMatamata['results'][0], $response);
-            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
+            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results'], "onfield" => $playersCounter);
         }
     }
     elseif($currentStatus == 1){
@@ -194,7 +177,7 @@ if ($phase[0] != "Initial"){
  
             //Store new data on file
             array_push($jsonMatamata['results'][0], $response);
-            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results']);
+            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results'], "onfield" => array());
             
             $closedround = array("noteams" => $jsonMatamata['noteams'], "initialround" => $jsonMatamata['initialround'], "teams" => $jsonMatamata['teams'], "slugs" => $jsonMatamata['slugs'], "players" => array(), "results" => $jsonMatamata['results']);
             

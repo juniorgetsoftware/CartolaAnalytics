@@ -53,11 +53,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha256-dq1fzSor46Oc+U/DjuE2hKKN0FfvbVx+CW5GBn1mhiQ=" crossorigin="anonymous"></script>
 
   <!--Bracket Script-->
-  <script src="js/jquery.bracket.min.js?v=1.0.5"></script>
+  <script src="js/jquery.bracket.min.js?v=1.0.6"></script>
   
   <!--User Scripts-->
-  <script src="js/matamataHostilidadefunctions.js?v=1.0.5"></script>
-  <script src="js/matamataHostilidade.js?v=1.0.5"></script>
+  <script src="js/matamataHostilidadefunctions.js?v=1.0.6"></script>
+  <script src="js/matamataHostilidade.js?v=1.0.6"></script>
   
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -104,6 +104,6 @@
 
 </body>
 
-<script src="js/matamatafooter.js?v=1.0.5"></script>
+<script src="js/matamatafooter.js?v=1.0.6"></script>
 
 </html>
