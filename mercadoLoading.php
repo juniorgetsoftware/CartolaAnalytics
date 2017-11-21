@@ -38,7 +38,7 @@ $list = [];
 ParseClient::initialize( $app_id, $rest_key, null );
 ParseClient::setServerURL('https://parseapi.back4app.com','/');
 
-$round = 33;
+$round = 34;
 
 $querytodelete = new ParseQuery('Mercado');
 $querytodelete->limit(1000);
