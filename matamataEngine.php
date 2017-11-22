@@ -5,8 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-set_time_limit(192);
+ini_set('memory_limit', '192M');
+set_time_limit(120);
 
 //Yalinqo
 require_once 'vendor/autoload.php';
