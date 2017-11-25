@@ -104,6 +104,6 @@
 
 </body>
 
-<script src="js/matamatafooter.js?v=1.0.7"></script>
+<script src="js/matamatafooter.js?v=1.0.8"></script>
 
 </html>
