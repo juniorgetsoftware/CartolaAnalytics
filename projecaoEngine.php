@@ -44,8 +44,8 @@ $strStatus = exec("curl -X GET ".$url);
 $jsonStatus = json_decode($strStatus, true);
 
 //Get current market data
-$strMercado = file_get_contents("data/Mercado.json");
-$jsonMercado = json_decode($strMercado, true);
+//$strMercado = file_get_contents("data/Mercado.json");
+//$jsonMercado = json_decode($strMercado, true);
 
 //Creating an array to put filtered result
 //$result = array();

@@ -134,7 +134,7 @@ if ($phase[0] != "Initial"){
             
             //Add new results
             array_push($jsonMatamata['results'][0], $response);
-            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results'], "onfield" => $playersCounter);
+            $result = array("teams" => $jsonMatamata['teams'], "results" => $jsonMatamata['results'], "onfield" => $playersCounter, "round" => $parc1);
         }
     }
     elseif($currentStatus == 1){

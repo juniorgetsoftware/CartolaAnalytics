@@ -63,7 +63,7 @@ $.ajax({
                 
                 var onfield = jsondata['onfield'];
                 for (x in onfield){
-                    $('[class^="team "][data-teamid='+x.toString()+']:last').children('.label').prepend('('+onfield[x]+') ');
+                    $('.round:nth-child(' + jsondata['round'] + ') [data-teamid=' + x.toString()+']').children('.label').prepend('('+onfield[x]+') ');
                 }
             }
         );
